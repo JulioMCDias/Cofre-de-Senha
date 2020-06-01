@@ -1,4 +1,5 @@
 
+import 'package:cofresenha/ui/screens/open_repository_screen.dart';
 import 'package:cofresenha/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,9 +15,9 @@ class MyApp extends StatelessWidget {
       title: 'Cofre de senhas',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
+        primaryColor: Colors.white,
+        unselectedWidgetColor: Colors.white,
+
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: SplashScreen(),
