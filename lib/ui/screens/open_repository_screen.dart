@@ -1,5 +1,6 @@
+import 'package:cofresenha/ui/screens/list_book_screen.dart';
+import 'package:cofresenha/ui/screens/list_password_screen.dart';
 import 'package:cofresenha/ui/widget/background_decoration.dart';
-import 'package:cofresenha/ui/widget/custom_text_filder.dart';
 import 'package:cofresenha/ui/widget/custom_text_from_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,6 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
 
                 CustomTextFromField(
                   passwordVisible: true,
-                  controller: TextEditingController(),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -64,7 +64,11 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
                     vertical: 25),
                   width: double.infinity,
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ListPasswordScreen())
+                      );
+                    },
                     elevation: 5,
                     padding: EdgeInsets.all(18),
                     shape: RoundedRectangleBorder(

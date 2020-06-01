@@ -1,5 +1,4 @@
 
-import 'package:cofresenha/ui/screens/open_repository_screen.dart';
 import 'package:cofresenha/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
