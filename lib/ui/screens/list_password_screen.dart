@@ -1,4 +1,5 @@
 import 'package:cofresenha/data/model/note_password.dart';
+import 'package:cofresenha/ui/screens/add_password_screen.dart';
 import 'package:cofresenha/ui/widget/background_decoration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,11 @@ class _ListPasswordScreenState extends State<ListPasswordScreen> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add, color: Colors.indigo,),
         backgroundColor: Theme.of(context).primaryColor,
-        onPressed: (){},
+        onPressed: (){
+          Navigator.push(context,
+            MaterialPageRoute( builder: (context) => AddPasswordScreen())
+          );
+        },
       ),
     );
   }
