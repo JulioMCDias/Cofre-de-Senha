@@ -1,5 +1,4 @@
 import 'package:cofresenha/ui/screens/list_book_screen.dart';
-import 'package:cofresenha/ui/screens/list_password_screen.dart';
 import 'package:cofresenha/ui/widget/background_decoration.dart';
 import 'package:cofresenha/ui/widget/custom_text_from_field.dart';
 import 'package:flutter/cupertino.dart';
@@ -65,8 +64,8 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
                   width: double.infinity,
                   child: RaisedButton(
                     onPressed: () {
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ListPasswordScreen())
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => ListBookScreen())
                       );
                     },
                     elevation: 5,
