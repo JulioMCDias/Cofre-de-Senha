@@ -1,0 +1,25 @@
+{
+  "title": "Cofre de senha",
+  "titleNewPassword": "Nova senha",
+  "titleEditPassword": "Editar senha",
+  "titleBooks": "Cadernos",
+
+  "infoOpenRepository": "Abrir repositorio",
+  "infoRepository": "Repositório:",
+  "infoNameBook": "Nome do Caderno",
+  "fieldTitlePassword": "Titulo da senha",
+  "fieldName": "Nome",
+  "fieldEmail": "Email",
+  "fieldPassword": "Senha",
+  "hintPassword": "Enter com a senha do repositorio",
+  "fieldDescription": "Descrição",
+
+  "btnOpenRepository": "Abrir",
+  "btnNewRepository": "Criar Repositório",
+  "btnCancel": "Cancelar",
+  "btnSave": "Save",
+
+  "checkBoxBiometric": "usar biometria",
+  "checkBoxPassword": "Relembrar senha"
+
+}

@@ -1,3 +1,4 @@
+import 'package:cofresenha/generated/l10n.dart';
 import 'package:cofresenha/ui/screens/list_password_screen.dart';
 import 'package:cofresenha/ui/screens/open_repository_screen.dart';
 import 'package:cofresenha/ui/widget/background_decoration.dart';
@@ -24,7 +25,7 @@ class _ListBookScreenState extends State<ListBookScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blueAccent,
-          title: Text("Cadernos",
+          title: Text(S.of(context).titleBooks,
             style: TextStyle(color: Theme.of(context).primaryColor),
           ),
           centerTitle: true,
@@ -63,13 +64,14 @@ class _ListBookScreenState extends State<ListBookScreen> {
   Widget _bookCard(context, String book){
     return GestureDetector(
       child: Card(
+        elevation: 5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15)
         ),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(20.0),
           child: Text(book,
-          style: TextStyle(color: Colors.indigo, fontSize: 28),
+          style: TextStyle(color: Colors.indigo, fontSize: 24),
           ),
         ),
       ),

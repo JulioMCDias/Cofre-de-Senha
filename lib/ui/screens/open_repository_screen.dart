@@ -1,6 +1,7 @@
+import 'package:cofresenha/generated/l10n.dart';
 import 'package:cofresenha/ui/screens/list_book_screen.dart';
 import 'package:cofresenha/ui/widget/background_decoration.dart';
-import 'package:cofresenha/ui/widget/custom_text_from_field.dart';
+import 'package:cofresenha/ui/widget/text_from_field_password.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,8 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
   String _nameRepository = "/repository";
   bool _rememberVal = false;
   bool passwordVisible = false;
+  TextEditingController _textEditingPassword = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Repositorio:",
+                Text(S.of(context).infoRepository,
                   style: TextStyle(fontSize: 24, color: Colors.white),
                 ),
                 Padding(
@@ -37,8 +40,8 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
                   ),
                 ),
 
-                CustomTextFromField(
-                  passwordVisible: true,
+                TextFromFieldPassword(
+                  Theme.of(context).primaryColor, _textEditingPassword,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -47,14 +50,16 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
                       value: _rememberVal,
                       checkColor: Colors.blue,
                       activeColor: Colors.white,
-
                       onChanged: (value) {
                         setState(() {
                           _rememberVal = value;
                         });
                       },
                     ),
-                    Text("Relembar senha", style: TextStyle(color: Colors.white),)
+                    Text(
+                      S.of(context).checkBoxPassword,
+                      style: TextStyle(color: Colors.white),
+                    )
                   ],
                 ),
 
@@ -69,9 +74,9 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
                       );
                     },
                     elevation: 5,
-                    padding: EdgeInsets.all(18),
+                    padding: EdgeInsets.all(14),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(25)),
                     color: Colors.white,
                     child: Row(
                       children: [
@@ -84,7 +89,7 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
                               ),
                               Center(
                                 child: Text(
-                                  "Abrir",
+                                  S.of(context).btnOpenRepository,
                                   style: TextStyle(fontSize: 20,
                                     color: Colors.indigo),
                                 ),
