@@ -1,7 +1,7 @@
 import 'package:cofresenha/generated/l10n.dart';
-import 'package:cofresenha/ui/screens/list_book_screen.dart';
+import 'package:cofresenha/ui/screens/listbook/list_book_screen.dart';
 import 'package:cofresenha/ui/widget/background_decoration.dart';
-import 'package:cofresenha/ui/widget/text_from_field_password.dart';
+import 'package:cofresenha/ui/widget/text_form_field_password.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -40,8 +40,9 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
                   ),
                 ),
 
-                TextFromFieldPassword(
-                  Theme.of(context).primaryColor, _textEditingPassword,
+                TextFormFieldPassword(
+                  color: Theme.of(context).primaryColor,
+                  controller: _textEditingPassword,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,

@@ -1,30 +1,31 @@
 import 'package:cofresenha/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
-class TextFromFieldPassword extends StatefulWidget {
+class TextFormFieldPassword extends StatefulWidget {
   final TextEditingController controller;
   final Color color;
   final bool passwordVisible;
   final bool editable;
   final TextAlign textAlign;
+  String errorText;
 
-  TextFromFieldPassword(
-    this.color,
-    this.controller,
-    {this.passwordVisible = false,
-      this.editable = false,
-      this.textAlign = TextAlign.start,
-    });
+  TextFormFieldPassword({
+    @required this.color,
+    @required this.controller,
+    this.errorText,
+    this.passwordVisible = false,
+    this.editable = false,
+    this.textAlign = TextAlign.start});
 
   @override
-  _TextFromFieldPasswordState createState() => _TextFromFieldPasswordState(!passwordVisible);
+  _TextFormFieldPasswordState createState() => _TextFormFieldPasswordState(!passwordVisible);
 }
 
 
-class _TextFromFieldPasswordState extends State<TextFromFieldPassword> {
+class _TextFormFieldPasswordState extends State<TextFormFieldPassword> {
 
   bool _passwordVisible;
-  _TextFromFieldPasswordState(this._passwordVisible);
+  _TextFormFieldPasswordState(this._passwordVisible);
 
 
   @override
@@ -37,6 +38,7 @@ class _TextFromFieldPasswordState extends State<TextFromFieldPassword> {
       readOnly: widget.editable,
       obscureText: _passwordVisible,
       decoration: InputDecoration(
+        errorText: widget.errorText,
         labelText: S.of(context).fieldPassword,
         labelStyle: TextStyle(fontSize:20, color: Theme.of(context).primaryColor),
         hintText: S.of(context).hintPassword,

@@ -93,6 +93,16 @@ class S {
     );
   }
 
+  /// `Nome do arquivo:`
+  String get infoFileName {
+    return Intl.message(
+      'Nome do arquivo:',
+      name: 'infoFileName',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Nome do Caderno`
   String get infoNameBook {
     return Intl.message(
@@ -218,6 +228,26 @@ class S {
     return Intl.message(
       'Relembrar senha',
       name: 'checkBoxPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `por favor entre com a senha`
+  String get validatePassword {
+    return Intl.message(
+      'por favor entre com a senha',
+      name: 'validatePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `entre com um nome para o arquivo`
+  String get validateNameFile {
+    return Intl.message(
+      'entre com um nome para o arquivo',
+      name: 'validateNameFile',
       desc: '',
       args: [],
     );

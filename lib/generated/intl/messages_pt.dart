@@ -33,12 +33,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "fieldPassword" : MessageLookupByLibrary.simpleMessage("Senha"),
     "fieldTitlePassword" : MessageLookupByLibrary.simpleMessage("Titulo da senha"),
     "hintPassword" : MessageLookupByLibrary.simpleMessage("Enter com a senha do repositorio"),
+    "infoFileName" : MessageLookupByLibrary.simpleMessage("Nome do arquivo:"),
     "infoNameBook" : MessageLookupByLibrary.simpleMessage("Nome do Caderno"),
     "infoOpenRepository" : MessageLookupByLibrary.simpleMessage("Abrir repositorio"),
     "infoRepository" : MessageLookupByLibrary.simpleMessage("Repositório:"),
     "title" : MessageLookupByLibrary.simpleMessage("Cofre de senha"),
     "titleBooks" : MessageLookupByLibrary.simpleMessage("Cadernos"),
     "titleEditPassword" : MessageLookupByLibrary.simpleMessage("Editar senha"),
-    "titleNewPassword" : MessageLookupByLibrary.simpleMessage("Nova senha")
+    "titleNewPassword" : MessageLookupByLibrary.simpleMessage("Nova senha"),
+    "validateNameFile" : MessageLookupByLibrary.simpleMessage("entre com um nome para o arquivo"),
+    "validatePassword" : MessageLookupByLibrary.simpleMessage("por favor entre com a senha")
   };
 }

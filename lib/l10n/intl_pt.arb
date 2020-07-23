@@ -6,6 +6,7 @@
 
   "infoOpenRepository": "Abrir repositorio",
   "infoRepository": "Repositório:",
+  "infoFileName": "Nome do arquivo:",
   "infoNameBook": "Nome do Caderno",
   "fieldTitlePassword": "Titulo da senha",
   "fieldName": "Nome",
@@ -20,6 +21,8 @@
   "btnSave": "Save",
 
   "checkBoxBiometric": "usar biometria",
-  "checkBoxPassword": "Relembrar senha"
+  "checkBoxPassword": "Relembrar senha",
+  "validatePassword": "por favor entre com a senha",
+  "validateNameFile": "entre com um nome para o arquivo"
 
 }

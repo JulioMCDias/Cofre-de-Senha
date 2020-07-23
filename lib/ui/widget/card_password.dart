@@ -1,5 +1,5 @@
 import 'package:cofresenha/data/model/note_password.dart';
-import 'package:cofresenha/ui/widget/text_from_field_password.dart';
+import 'package:cofresenha/ui/widget/text_form_field_password.dart';
 import 'package:flutter/material.dart';
 
 
@@ -58,8 +58,9 @@ class _CardPasswordState extends State<CardPassword> {
                           ),
                         ),
                         Expanded(
-                          child: TextFromFieldPassword(
-                            Colors.indigo, _textEditingPassword,
+                          child: TextFormFieldPassword(
+                            color: Colors.indigo,
+                            controller: _textEditingPassword,
                             editable: true,
                             textAlign: TextAlign.right,
                           )

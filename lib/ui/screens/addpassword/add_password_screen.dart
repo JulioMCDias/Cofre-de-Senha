@@ -1,7 +1,7 @@
 import 'package:cofresenha/generated/l10n.dart';
 import 'package:cofresenha/ui/widget/background_decoration.dart';
 import 'package:cofresenha/ui/widget/custom_text_filder.dart';
-import 'package:cofresenha/ui/widget/text_from_field_password.dart';
+import 'package:cofresenha/ui/widget/text_form_field_password.dart';
 import 'package:flutter/material.dart';
 
 class AddPasswordScreen extends StatefulWidget {
@@ -66,8 +66,9 @@ class _AddPasswordScreenState extends State<AddPasswordScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16, bottom: 32),
-                  child: TextFromFieldPassword(
-                    Theme.of(context).primaryColor, _textEditingPassword
+                  child: TextFormFieldPassword(
+                    color: Theme.of(context).primaryColor,
+                    controller: _textEditingPassword
                   ),
                 ),
                 Padding(

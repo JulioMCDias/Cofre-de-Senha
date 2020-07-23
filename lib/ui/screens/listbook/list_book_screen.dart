@@ -1,6 +1,6 @@
 import 'package:cofresenha/generated/l10n.dart';
-import 'package:cofresenha/ui/screens/list_password_screen.dart';
-import 'package:cofresenha/ui/screens/open_repository_screen.dart';
+import 'package:cofresenha/ui/screens/listpassword/list_password_screen.dart';
+import 'package:cofresenha/ui/screens/openrepository/open_repository_screen.dart';
 import 'package:cofresenha/ui/widget/background_decoration.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,5 @@
 import 'package:cofresenha/data/model/note_password.dart';
-import 'package:cofresenha/ui/screens/add_password_screen.dart';
+import 'package:cofresenha/ui/screens/addpassword/add_password_screen.dart';
 import 'package:cofresenha/ui/widget/background_decoration.dart';
 import 'package:cofresenha/ui/widget/card_password.dart';
 import 'package:flutter/cupertino.dart';

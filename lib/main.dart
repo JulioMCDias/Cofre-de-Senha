@@ -1,14 +1,15 @@
 
-import 'package:cofresenha/ui/screens/splash_screen.dart';
+import 'package:cofresenha/ui/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
 import 'generated/l10n.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends AppMVC {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
