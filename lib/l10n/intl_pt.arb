@@ -24,9 +24,10 @@
 
   "checkBoxBiometric": "usar biometria",
   "checkBoxPassword": "Relembrar senha",
+
   "validatePassword": "por favor entre com a senha",
   "validateNameFile": "entre com um nome para o arquivo",
-  "validateNameBook": "entre com um nome para o caderno"
-
-
+  "validateNameBook": "entre com um nome para o caderno",
+  "validateTitle": "por favor entre com um titulo",
+  "validateEmail": "por favor entre com um email"
 }

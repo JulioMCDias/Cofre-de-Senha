@@ -158,10 +158,10 @@ class _CreateRepositoryScreenState extends StateMVC<CreateRepositoryScreen> {
                   width: double.infinity,
                   child: RaisedButton(
                     onPressed: () {
-                      if(_bloc.validatePassword(context, _textEditingPassword.value.text) &
-                      _bloc.validateNameFile(context, _textEditingNameFile.value.text)) {
-                        con.createRepository(_textEditingPassword.value.text,
-                          _textEditingNameFile.value.text);
+                      if(_bloc.validatePassword(context, _textEditingPassword.text) &
+                      _bloc.validateNameFile(context, _textEditingNameFile.text)) {
+                        con.createRepository(_textEditingPassword.text,
+                          _textEditingNameFile.text);
                       }
                     },
                     elevation: 5,

@@ -24,14 +24,16 @@ class ListPasswordCon extends ControllerMVC{
     bloc.setListPassword(_repository.getListPassword());
   }
 
-  void addPassword(){
-    Navigator.push(context,
-      MaterialPageRoute( builder: (context) => AddPasswordScreen())
-    );
+  void addPassword() {
+    navigationScreen(null).then((value) => updateList());
   }
 
   void editPassword(Password password){
-    Navigator.push(context,
+    navigationScreen(password).then((value) => updateList());
+  }
+
+  Future<void> navigationScreen(Password password) async {
+    return await Navigator.push(context,
       MaterialPageRoute( builder: (context) => AddPasswordScreen(password: password))
     );
   }

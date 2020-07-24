@@ -282,6 +282,26 @@ class S {
       args: [],
     );
   }
+
+  /// `por favor entre com um titulo`
+  String get validateTitle {
+    return Intl.message(
+      'por favor entre com um titulo',
+      name: 'validateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `por favor entre com um email`
+  String get validateEmail {
+    return Intl.message(
+      'por favor entre com um email',
+      name: 'validateEmail',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

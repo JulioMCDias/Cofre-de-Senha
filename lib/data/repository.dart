@@ -86,34 +86,34 @@ class Repository {
 
   //--------- Password -----------
   List<Password> getListPassword({String name}) {
-    if(bookName == null)
-      return (_books.where((item) => item.name == bookName) as Book).passwords;
-    return (_books.where((item) => item.name == name) as Book).passwords;
+    if(name == null)
+      return (_books.where((item) => item.name == bookName)).single.passwords ?? List<Password>();
+    return (_books.where((item) => item.name == name)).single.passwords ?? List<Password>();
   }
 
   void addPassword(Password password) {
     List<Password> passwords =
-        (_books.where((item) => item.name == bookName) as Book).passwords;
+        (_books.where((item) => item.name == bookName)).single.passwords;
     if (passwords == null) {
       var list = List<Password>();
       list.add(password);
-      (_books.where((item) => item.name == bookName) as Book).passwords = list;
+      (_books.where((item) => item.name == bookName)).single.passwords = list;
     } else
       passwords.add(password);
     updateFile();
   }
 
   void removeItemPassword(Password password) {
-    (_books.where((item) => item.name == bookName) as Book)
-        .passwords
-        .remove(password);
+    (_books.where((item) => item.name == bookName))
+      .single.passwords
+      .remove(password);
     updateFile();
   }
 
   void restoreItemPassword(Password password, int position) {
-    (_books.where((item) => item.name == bookName) as Book)
-        .passwords
-        .insert(position, password);
+    (_books.where((item) => item.name == bookName))
+      .single.passwords
+      .insert(position, password);
     updateFile();
   }
 

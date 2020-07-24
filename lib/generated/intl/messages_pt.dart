@@ -43,8 +43,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "titleBooks" : MessageLookupByLibrary.simpleMessage("Cadernos"),
     "titleEditPassword" : MessageLookupByLibrary.simpleMessage("Editar senha"),
     "titleNewPassword" : MessageLookupByLibrary.simpleMessage("Nova senha"),
+    "validateEmail" : MessageLookupByLibrary.simpleMessage("por favor entre com um email"),
     "validateNameBook" : MessageLookupByLibrary.simpleMessage("entre com um nome para o caderno"),
     "validateNameFile" : MessageLookupByLibrary.simpleMessage("entre com um nome para o arquivo"),
-    "validatePassword" : MessageLookupByLibrary.simpleMessage("por favor entre com a senha")
+    "validatePassword" : MessageLookupByLibrary.simpleMessage("por favor entre com a senha"),
+    "validateTitle" : MessageLookupByLibrary.simpleMessage("por favor entre com um titulo")
   };
 }

@@ -54,8 +54,10 @@ class _ListPasswordScreenState extends StateMVC<ListPasswordScreen> {
         height: double.infinity,
         child: Center(
           child: StreamBuilder(
+            initialData: List<Password>(),
+            stream: _bloc.streamListPassword,
             builder: (context, listPassword) => ListView.builder(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.only(top: 10, left: 8, right: 8, bottom: 100),
               itemCount: listPassword.data.length,
               itemBuilder: (context, index){
                 return _passwordCard(listPassword.data[index]);
