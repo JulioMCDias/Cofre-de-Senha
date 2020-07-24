@@ -1,4 +1,4 @@
-import 'package:cofresenha/data/model/note_password.dart';
+import 'package:cofresenha/data/model/password.dart';
 import 'package:cofresenha/ui/screens/addpassword/add_password_screen.dart';
 import 'package:cofresenha/ui/widget/background_decoration.dart';
 import 'package:cofresenha/ui/widget/card_password.dart';
@@ -11,16 +11,16 @@ class ListPasswordScreen extends StatefulWidget {
 }
 
 class _ListPasswordScreenState extends State<ListPasswordScreen> {
-  final List<NotePassword> _notePasswords = List();
+  final List<Password> _notePasswords = List();
   final String _title = "Sites";
 
   @override
   void initState() {
     super.initState();
-    _notePasswords.add(NotePassword(name: "nome", title: "Titulo",
+    _notePasswords.add(Password(name: "nome", title: "Titulo",
       email: "email@test.com", password: "password"));
 
-    _notePasswords.add(NotePassword(name: "nomess", title: "Titulo",
+    _notePasswords.add(Password(name: "nomess", title: "Titulo",
       email: "email@test.com", password: "passwoadssdrd"));
   }
 

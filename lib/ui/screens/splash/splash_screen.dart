@@ -2,7 +2,6 @@ import 'package:cofresenha/generated/l10n.dart';
 import 'package:cofresenha/ui/screens/openrepository/open_repository_screen.dart';
 import 'package:cofresenha/ui/screens/splash/splash_bloc.dart';
 import 'package:cofresenha/ui/widget/background_decoration.dart';
-import 'package:cofresenha/data/help_file.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,7 +15,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
-  SplashBloc bloc = SplashBloc();
+  SplashBloc _bloc = SplashBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +29,13 @@ class _SplashScreenState extends State<SplashScreen> {
             alignment: AlignmentDirectional.center,
             children: [
             StreamBuilder<bool>(
-            stream: bloc.streamMove,
+            stream: _bloc.streamMove,
             initialData: false,
-            builder: (context, snapshot){
+            builder: (context, move){
               return AnimatedPositioned(
                   duration: Duration(seconds: 1),
-                  top: bloc.move ? 10 : 150,
-                  bottom: bloc.move ? 150 : 10,
+                  top: move.data ? 10 : 150,
+                  bottom: move.data ? 150 : 10,
                   curve: Curves.fastOutSlowIn,
                   child: Container(
                     padding: EdgeInsets.only(left: 80, right: 80, bottom: 100),
@@ -48,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 );
             }),
               StreamBuilder<double>(
-                stream: bloc.streamOpacityLevel,
+                stream: _bloc.streamOpacityLevel,
                 initialData: 0,
                 builder: (context, snapshot){
                   return AnimatedOpacity(
@@ -159,7 +158,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void dispose() {
-    bloc.dispose();
+    _bloc.dispose();
     super.dispose();
   }
 }

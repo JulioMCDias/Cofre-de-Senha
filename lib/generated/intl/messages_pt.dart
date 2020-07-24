@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnCancel" : MessageLookupByLibrary.simpleMessage("Cancelar"),
     "btnNewRepository" : MessageLookupByLibrary.simpleMessage("Criar Repositório"),
     "btnOpenRepository" : MessageLookupByLibrary.simpleMessage("Abrir"),
-    "btnSave" : MessageLookupByLibrary.simpleMessage("Save"),
+    "btnSave" : MessageLookupByLibrary.simpleMessage("Salvar"),
     "checkBoxBiometric" : MessageLookupByLibrary.simpleMessage("usar biometria"),
     "checkBoxPassword" : MessageLookupByLibrary.simpleMessage("Relembrar senha"),
     "fieldDescription" : MessageLookupByLibrary.simpleMessage("Descrição"),
@@ -33,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "fieldPassword" : MessageLookupByLibrary.simpleMessage("Senha"),
     "fieldTitlePassword" : MessageLookupByLibrary.simpleMessage("Titulo da senha"),
     "hintPassword" : MessageLookupByLibrary.simpleMessage("Enter com a senha do repositorio"),
+    "infoAddNewBook" : MessageLookupByLibrary.simpleMessage("Adicionar caderno"),
+    "infoEditBook" : MessageLookupByLibrary.simpleMessage("Editar caderno"),
     "infoFileName" : MessageLookupByLibrary.simpleMessage("Nome do arquivo:"),
     "infoNameBook" : MessageLookupByLibrary.simpleMessage("Nome do Caderno"),
     "infoOpenRepository" : MessageLookupByLibrary.simpleMessage("Abrir repositorio"),
@@ -41,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "titleBooks" : MessageLookupByLibrary.simpleMessage("Cadernos"),
     "titleEditPassword" : MessageLookupByLibrary.simpleMessage("Editar senha"),
     "titleNewPassword" : MessageLookupByLibrary.simpleMessage("Nova senha"),
+    "validateNameBook" : MessageLookupByLibrary.simpleMessage("entre com um nome para o caderno"),
     "validateNameFile" : MessageLookupByLibrary.simpleMessage("entre com um nome para o arquivo"),
     "validatePassword" : MessageLookupByLibrary.simpleMessage("por favor entre com a senha")
   };

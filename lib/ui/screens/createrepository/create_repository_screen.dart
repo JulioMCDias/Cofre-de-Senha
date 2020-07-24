@@ -199,4 +199,10 @@ class _CreateRepositoryScreenState extends StateMVC<CreateRepositoryScreen> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    _bloc.dispose();
+    super.dispose();
+  }
 }

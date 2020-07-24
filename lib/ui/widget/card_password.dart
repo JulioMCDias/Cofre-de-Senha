@@ -1,10 +1,10 @@
-import 'package:cofresenha/data/model/note_password.dart';
+import 'package:cofresenha/data/model/password.dart';
 import 'package:cofresenha/ui/widget/text_form_field_password.dart';
 import 'package:flutter/material.dart';
 
 
 class CardPassword extends StatefulWidget {
-  final NotePassword notePassword;
+  final Password notePassword;
   CardPassword(this.notePassword);
 
   @override
@@ -13,7 +13,7 @@ class CardPassword extends StatefulWidget {
 
 class _CardPasswordState extends State<CardPassword> {
 
-  final NotePassword _notePassword;
+  final Password _notePassword;
   final _textEditingPassword = TextEditingController();
 
   _CardPasswordState(this._notePassword);

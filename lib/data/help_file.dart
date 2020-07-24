@@ -7,7 +7,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
 class HelpFile{
-  File _file;
 
   // pega o local escolido pelo usuario
   Future<String> openDirectoryPath() async =>
@@ -21,17 +20,19 @@ class HelpFile{
 
   // create new file
   Future<File> createFile(String nameFile, String local) async {
-
     final path = (local == null)? localPath(): local;
-    _file = File('$path/$nameFile.${Constants.TYPE_FILE}');
-    return _file;
+    return File('$path/$nameFile.${Constants.TYPE_FILE}');
 }
 
   // write in file
-  Future<File> writeFile(String message) async {
-    return _file.writeAsString(message);
+  Future<File> writeFile(String message, File file) async {
+    return file.writeAsString(message);
   }
 
+  // Reload file
+  Future<String> readFile(File file) async{
+    return file.readAsString();
+  }
 
   Future<File> openFileType(List<String> types) async =>
     await FilePicker.getFile(type: FileType.custom, allowedExtensions: types);

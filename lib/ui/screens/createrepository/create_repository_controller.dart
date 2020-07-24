@@ -10,8 +10,6 @@ class CreateRepositoryCon extends ControllerMVC{
   final _helpFile = HelpFile();
   CreateRepositoryBloc bloc;
 
-  String _path;
-
   // Singleton Factory
   CreateRepositoryCon._();
   static final CreateRepositoryCon _this = CreateRepositoryCon._();
@@ -20,13 +18,11 @@ class CreateRepositoryCon extends ControllerMVC{
     return _this;
   }
 
-  //-- get controller --
-  //static CreateRepositoryCon get con => _this;
-
-
 
 
   //------------------- CreateRepository -------------------------
+  String _path;
+
   void openDirectoryPath(){
     _helpFile.openDirectoryPath().then((value){
       if(value == null) {
@@ -43,16 +39,17 @@ class CreateRepositoryCon extends ControllerMVC{
   }
 
   void createRepository(String password, String nameFile){
-    _helpFile.createFile(nameFile, _path).then((value){
+    _helpFile.createFile(nameFile, _path).then((file){
+
+      _repository.setFile(file);
 
 
-
-      navigationListBook();
+      _navigationListBook();
     });
   }
 
 
-  void navigationListBook(){
+  void _navigationListBook(){
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (context) => ListBookScreen())
     );

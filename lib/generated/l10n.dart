@@ -113,6 +113,26 @@ class S {
     );
   }
 
+  /// `Adicionar caderno`
+  String get infoAddNewBook {
+    return Intl.message(
+      'Adicionar caderno',
+      name: 'infoAddNewBook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Editar caderno`
+  String get infoEditBook {
+    return Intl.message(
+      'Editar caderno',
+      name: 'infoEditBook',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Titulo da senha`
   String get fieldTitlePassword {
     return Intl.message(
@@ -203,10 +223,10 @@ class S {
     );
   }
 
-  /// `Save`
+  /// `Salvar`
   String get btnSave {
     return Intl.message(
-      'Save',
+      'Salvar',
       name: 'btnSave',
       desc: '',
       args: [],
@@ -248,6 +268,16 @@ class S {
     return Intl.message(
       'entre com um nome para o arquivo',
       name: 'validateNameFile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `entre com um nome para o caderno`
+  String get validateNameBook {
+    return Intl.message(
+      'entre com um nome para o caderno',
+      name: 'validateNameBook',
       desc: '',
       args: [],
     );

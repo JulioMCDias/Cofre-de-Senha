@@ -8,6 +8,8 @@
   "infoRepository": "Repositório:",
   "infoFileName": "Nome do arquivo:",
   "infoNameBook": "Nome do Caderno",
+  "infoAddNewBook": "Adicionar caderno",
+  "infoEditBook": "Editar caderno",
   "fieldTitlePassword": "Titulo da senha",
   "fieldName": "Nome",
   "fieldEmail": "Email",
@@ -18,11 +20,13 @@
   "btnOpenRepository": "Abrir",
   "btnNewRepository": "Criar Repositório",
   "btnCancel": "Cancelar",
-  "btnSave": "Save",
+  "btnSave": "Salvar",
 
   "checkBoxBiometric": "usar biometria",
   "checkBoxPassword": "Relembrar senha",
   "validatePassword": "por favor entre com a senha",
-  "validateNameFile": "entre com um nome para o arquivo"
+  "validateNameFile": "entre com um nome para o arquivo",
+  "validateNameBook": "entre com um nome para o caderno"
+
 
 }

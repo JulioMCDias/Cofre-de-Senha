@@ -2,11 +2,6 @@ import 'dart:async';
 
 class SplashBloc {
 
-  bool _move = false;
-  bool get move => _move;
-  double _opacityLevel = 0;
-  double get opacityLevel => _opacityLevel;
-
   final _blocMove = StreamController<bool>();
   Stream<bool> get streamMove => _blocMove.stream;
 
@@ -14,19 +9,11 @@ class SplashBloc {
   Stream<double> get streamOpacityLevel => _blocOpacityLevel.stream;
 
   SplashBloc() {
-
     Future.delayed(Duration(seconds: 1))
-      .then((value) {
-        _move = true;
-        _blocMove.sink.add(_move);
-      }
-      );
+      .then((value) => _blocMove.sink.add(true));
 
     Future.delayed(Duration(seconds: 2))
-      .then((value){
-        _opacityLevel = 1;
-        _blocOpacityLevel.sink.add(_opacityLevel);
-      });
+      .then((value) => _blocOpacityLevel.sink.add(1));
   }
 
   void dispose(){

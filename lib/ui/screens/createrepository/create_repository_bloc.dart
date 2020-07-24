@@ -7,12 +7,6 @@ import 'package:flutter/cupertino.dart';
 
 class CreateRepositoryBloc {
 
-  String _pathRepository = "";
-  get pathRepository => _pathRepository;
-  bool _rememberPassword = false;
-  get rememberPassword => _rememberPassword;
-
-
   final _blocPathRepository = StreamController<String>();
   Stream<String> get streamPathRepository => _blocPathRepository.stream;
 
@@ -37,7 +31,7 @@ class CreateRepositoryBloc {
     return true;
   }
 
-  // validate password
+  // validate Name File
   bool validateNameFile(BuildContext context, String name){
     if(name == null || name == '') {
       _blocValidateName.sink.add(S.of(context).validateNameFile);
@@ -48,12 +42,10 @@ class CreateRepositoryBloc {
   }
 
   void setPathRepository(String name){
-    _pathRepository = name;
     _blocPathRepository.sink.add(name);
   }
 
   void setRememberPassword(bool remember){
-    _rememberPassword = remember;
     _blocRememberPassword.sink.add(remember);
   }
 
