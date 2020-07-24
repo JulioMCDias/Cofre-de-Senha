@@ -18,7 +18,7 @@ class Repository {
   //----------------------- Repository --------------
   Crypto _crypt;
   HelpFile _helpFile = HelpFile();
-  String _bookName;
+  String bookName;
 
   List<Book> _books = List<Book>();
 
@@ -43,6 +43,12 @@ class Repository {
 
       _books = listBook.map((i) => Book.fromJson(i)).toList();
     });
+  }
+
+  void logoutRepository(){
+    _crypt = null;
+    _file = null;
+    _books = null;
   }
 
   // ------------update file ---------------
@@ -79,39 +85,40 @@ class Repository {
   }
 
   //--------- Password -----------
-  List<Password> getListPassword(String name) {
-    _bookName = name;
+  List<Password> getListPassword({String name}) {
+    if(bookName == null)
+      return (_books.where((item) => item.name == bookName) as Book).passwords;
     return (_books.where((item) => item.name == name) as Book).passwords;
   }
 
   void addPassword(Password password) {
     List<Password> passwords =
-        (_books.where((item) => item.name == _bookName) as Book).passwords;
+        (_books.where((item) => item.name == bookName) as Book).passwords;
     if (passwords == null) {
       var list = List<Password>();
       list.add(password);
-      (_books.where((item) => item.name == _bookName) as Book).passwords = list;
+      (_books.where((item) => item.name == bookName) as Book).passwords = list;
     } else
       passwords.add(password);
     updateFile();
   }
 
   void removeItemPassword(Password password) {
-    (_books.where((item) => item.name == _bookName) as Book)
+    (_books.where((item) => item.name == bookName) as Book)
         .passwords
         .remove(password);
     updateFile();
   }
 
   void restoreItemPassword(Password password, int position) {
-    (_books.where((item) => item.name == _bookName) as Book)
+    (_books.where((item) => item.name == bookName) as Book)
         .passwords
         .insert(position, password);
     updateFile();
   }
 
   Password getPassword(String title) {
-    return getListPassword(_bookName).where((element) => element.title == title)
+    return getListPassword(name: bookName).where((element) => element.title == title)
         as Password;
   }
 }

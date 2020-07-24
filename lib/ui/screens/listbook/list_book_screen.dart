@@ -39,7 +39,7 @@ class _ListBookScreenState extends StateMVC<ListBookScreen> {
             IconButton(
               icon: Icon(Icons.exit_to_app, color: Theme.of(context).primaryColor,),
               onPressed: (){
-                con.exitRepository();
+                con.logoutRepository();
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => SplashScreen())
                 );
@@ -77,7 +77,7 @@ class _ListBookScreenState extends StateMVC<ListBookScreen> {
   }
 
 
-
+  // ---------------- card -----------------
   Widget _bookCard(context, Book book){
     return GestureDetector(
       child: Card(

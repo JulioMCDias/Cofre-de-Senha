@@ -24,20 +24,20 @@ class ListBookCon extends ControllerMVC{
 
   void btnAdd(String book){
     _repository.addBook(book);
-    updateListBook();
+    _updateListBook();
   }
 
-  void updateListBook(){
+  void _updateListBook(){
     bloc.setListBook(_repository.getListBook());
   }
 
   void updateBook(Book book, String name){
     _repository.updateBook(book, name);
-    updateListBook();
+    _updateListBook();
   }
 
   void btnItem(Book book){
-
+    _repository.bookName = book.name;
     _navigationListPassword();
   }
 
@@ -48,7 +48,7 @@ class ListBookCon extends ControllerMVC{
     );
   }
 
-  void exitRepository(){
-
+  void logoutRepository(){
+    _repository.logoutRepository();
   }
 }

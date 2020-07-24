@@ -1,3 +1,4 @@
+import 'package:cofresenha/data/model/password.dart';
 import 'package:cofresenha/generated/l10n.dart';
 import 'package:cofresenha/ui/widget/background_decoration.dart';
 import 'package:cofresenha/ui/widget/custom_text_filder.dart';
@@ -5,6 +6,10 @@ import 'package:cofresenha/ui/widget/text_form_field_password.dart';
 import 'package:flutter/material.dart';
 
 class AddPasswordScreen extends StatefulWidget {
+  final Password password;
+  AddPasswordScreen({this.password});
+
+
   @override
   _AddPasswordScreenState createState() => _AddPasswordScreenState();
 }
