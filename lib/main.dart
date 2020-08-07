@@ -1,15 +1,15 @@
 
-import 'package:cofresenha/ui/screens/splash/splash_screen.dart';
+import 'package:cofresenha/src/data/repository.dart';
+import 'package:cofresenha/src/presentation/splash/splash_presenter.dart';
+import 'package:cofresenha/src/ui/screens/splash/splash_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
 import 'generated/l10n.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
-class MyApp extends AppMVC {
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,7 +27,7 @@ class MyApp extends AppMVC {
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SplashScreen(),
+      home: SplashPresenter().view.screen,
       title: "Cofre de senha",
     );
   }
