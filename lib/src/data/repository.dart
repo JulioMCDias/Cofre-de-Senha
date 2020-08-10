@@ -5,20 +5,24 @@ import 'package:cofresenha/src/data/crypt.dart';
 import 'package:cofresenha/src/data/help_file.dart';
 import 'package:cofresenha/src/data/model/book.dart';
 import 'package:cofresenha/src/data/model/password.dart';
+import 'package:cofresenha/src/data/preference_helper.dart';
 
 class Repository {
-  Repository._internal(this._helpFile);
+  Repository._internal(this._helpFile, this._preferenceHelper);
 
   static  Repository _this;
 
-  factory Repository({HelpFile helpFile}) {
+  factory Repository({HelpFile helpFile, PreferenceHelper pHelper}) {
     if(_this == null)
-      _this = Repository._internal( helpFile == null ? HelpFile() : helpFile);
+      _this = Repository._internal( helpFile ?? HelpFile(),
+        pHelper ?? PreferenceHelper());
+
     return _this;
   }
 
   //----------------------- Repository --------------
   final HelpFile _helpFile;
+  final PreferenceHelper _preferenceHelper;
   Crypto _crypt;
   String bookName;
 
