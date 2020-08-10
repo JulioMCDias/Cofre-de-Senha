@@ -8,7 +8,8 @@ class Book{
 
   Book.fromJson(Map<String, dynamic> json)
     : name = json['name'],
-      passwords = json['passwords'];
+      passwords = (json['passwords'] as List).map((i) => Password.fromJson(i)).toList();
+
 
   Map<String, dynamic> toJson() => {
     'name' : name,

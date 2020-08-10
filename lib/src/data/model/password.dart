@@ -1,6 +1,8 @@
 
 import 'dart:core';
 
+import 'package:flutter/widgets.dart';
+
 class Password{
   String title;
   String name;
@@ -8,7 +10,7 @@ class Password{
   String password;
   String description;
 
-  Password({this.title, this.name, this.email, this.password, this.description});
+  Password({@required this.title, this.name, @required this.email, @required this.password, this.description});
 
 
   Password.fromJson(Map<String, dynamic> json)
@@ -26,4 +28,8 @@ class Password{
       'description': description,
     };
 
+  @override
+  String toString() {
+    return "title: $title, name: $name, email: $email, password: $password, description: $description";
+  }
 }

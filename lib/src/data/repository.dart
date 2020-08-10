@@ -7,17 +7,19 @@ import 'package:cofresenha/src/data/model/book.dart';
 import 'package:cofresenha/src/data/model/password.dart';
 
 class Repository {
-  Repository._internal();
+  Repository._internal(this._helpFile);
 
-  static final Repository _this = Repository._internal();
+  static  Repository _this;
 
-  factory Repository() {
+  factory Repository({HelpFile helpFile}) {
+    if(_this == null)
+      _this = Repository._internal( helpFile == null ? HelpFile() : helpFile);
     return _this;
   }
 
   //----------------------- Repository --------------
+  final HelpFile _helpFile;
   Crypto _crypt;
-  HelpFile _helpFile = HelpFile();
   String bookName;
 
   List<Book> _books = List<Book>();
@@ -53,9 +55,9 @@ class Repository {
 
   // ------------update file ---------------
   void updateFile() {
-    /*String data = jsonEncode(_books);
+    String data = jsonEncode(_books);
     String fileString = _crypt.encryptRepositoryBase64(data);
-    _helpFile.writeFile(fileString, _file);*/
+    _helpFile.writeFile(fileString, _file);
   }
 
   // -------- book --------------

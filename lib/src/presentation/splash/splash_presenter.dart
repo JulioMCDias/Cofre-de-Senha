@@ -4,15 +4,16 @@ import 'package:cofresenha/src/ui/screens/splash/splash_bloc.dart';
 
 class SplashPresenter{
   SplashView view;
-  final _repository = Repository();
+  Repository _repository;
 
-  SplashPresenter(){
+  SplashPresenter({Repository repository}){
+    _repository = repository == null ? Repository(): repository;
     view = SplashBloc(this);
   }
 
 
   void newRepository(){
-
+    view.navigationNewRepository();
   }
 
   void openRepository(){
