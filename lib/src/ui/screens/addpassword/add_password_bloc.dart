@@ -49,22 +49,22 @@ class AddPasswordBloc implements AddPasswordView{
   set title(title) => _textEditingName.text = title;
 
   @override
-  get name => _textEditingName;
+  get name => _textEditingName.text;
   @override
   set name(name) => _textEditingName.text = name;
 
   @override
-  get email => _textEditingEmail;
+  get email => _textEditingEmail.text;
   @override
   set email(email) => _textEditingName.text = email;
 
   @override
-  get password => _textEditingPassword;
+  get password => _textEditingPassword.text;
   @override
   set password(password) => _textEditingName.text = password;
 
   @override
-  get description => _textEditingDescription;
+  get description => _textEditingDescription.text;
   @override
   set description(description) => _textEditingName.text = description;
 

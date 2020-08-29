@@ -24,6 +24,7 @@ class OpenRepositoryBloc implements OpenRepositoryView{
   //----- initState -----
   void initState(BuildContext context){
     this._context = context;
+    _presenter.init();
   }
 
   // ------------- StreamControllers -----------------

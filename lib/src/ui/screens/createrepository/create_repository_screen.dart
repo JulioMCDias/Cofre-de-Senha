@@ -39,69 +39,30 @@ class _CreateRepositoryScreenState extends State<CreateRepositoryScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  child: Row(
-                    children: [
-                      Text(S.of(context).infoRepository,
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                        textAlign: TextAlign.left,
-                      ),
-                       Expanded(
-                         child: Padding(
-                           padding: const EdgeInsets.only(left: 8.0),
-                           child: StreamBuilder<String>(
-                              stream: _bloc.streamPathRepository,
-                              initialData: "",
-                              builder: (context, snapshot){
-                                return  Text(snapshot.data,
-                                    style: TextStyle(fontSize: 16, color: Colors.white),
-                                );},
-                        ),
-                         ),
-                       )
-                    ],
-                  ),
-                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0, bottom: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(right:12.0),
-                            child: Text(S.of(context).infoFileName,
-                                  textAlign: TextAlign.end,
-                                  style: TextStyle(fontSize: 22, color: Colors.white),
-                                ),
-                            ),
-                          ),
-                        Expanded(
-                          child: TextFormField(
-                                style: TextStyle(
-                                  fontSize: 18, color: Colors.white),
-                                controller: _bloc.textEditingNameFile,
-                                decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.only(
-                                    left: 8.0),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      width: 2, color: Theme
-                                      .of(context)
-                                      .primaryColor)
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      width: 2,
-                                      color: Theme
-                                        .of(context)
-                                        .primaryColor)
-                                  ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 4.0),
+                            child: Text(S.of(context).infoRepository,
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(fontSize: 20, color: Colors.white),
                                 ),
                           ),
-                        ),
+                        Expanded(
+                          child: StreamBuilder<String>(
+                            initialData: "",
+                            stream: _bloc.streamPathRepository,
+                            builder: (context, snapshot) {
+                              return Text(snapshot.data,
+                                textAlign: TextAlign.start,
+                                style: TextStyle(fontSize: 18, color: Colors.white),
+                        );
+                            }
+                          )
+                        )
                       ],
                     ),
                 ),
@@ -145,7 +106,7 @@ class _CreateRepositoryScreenState extends State<CreateRepositoryScreen> {
                       _bloc.btnCreateRepository();
                     },
                     elevation: 5,
-                    padding: EdgeInsets.all(14),
+                    padding: EdgeInsets.all(20),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25)),
                     color: Colors.white,

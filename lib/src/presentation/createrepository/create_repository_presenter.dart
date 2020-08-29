@@ -18,5 +18,8 @@ class CreateRepositoryPresenter{
       view.navigationListBook();
   }
 
-  String getNameFile() => _repository.getFileName();
+
+  void init() {
+    view.setPathRepository(_repository.getPathFile());
+  }
 }

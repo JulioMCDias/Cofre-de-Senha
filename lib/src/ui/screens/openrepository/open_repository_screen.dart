@@ -85,7 +85,7 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
                     onPressed: () => _bloc.btnOpenRepository(),
 
                     elevation: 5,
-                    padding: EdgeInsets.all(14),
+                    padding: EdgeInsets.all(20),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25)),
                     color: Colors.white,

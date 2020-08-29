@@ -80,7 +80,7 @@ class _SplashScreenState extends State<SplashScreen> {
                               onPressed: () => _bloc.btnOpenRepository(),
 
                               elevation: 5,
-                              padding: EdgeInsets.all(14),
+                              padding: EdgeInsets.all(20),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25)),
                               color: Colors.white,
@@ -114,7 +114,7 @@ class _SplashScreenState extends State<SplashScreen> {
                               onPressed: () => _bloc.btnNewRepository(),
 
                               elevation: 5,
-                              padding: EdgeInsets.all(14),
+                              padding: EdgeInsets.all(20),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25)),
                               color: Colors.white,

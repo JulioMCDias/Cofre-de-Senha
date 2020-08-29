@@ -31,7 +31,7 @@ class Repository {
   File _file;
 
   void setFile(File file) => _file = file;
-  String getFileName() => _file.path.split('/').last;
+  String getPathFile() => _file.path;
 
   // --------- cria o repositorio --------
   void createRepository(String password) {

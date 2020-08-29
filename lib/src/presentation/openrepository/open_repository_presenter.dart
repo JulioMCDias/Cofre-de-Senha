@@ -18,6 +18,10 @@ class OpenRepositoryPresenter{
     return _repository.openRepository(password);
   }
 
+  void init() {
+    view.setPathRepository(_repository.getPathFile());
+  }
+
 
 
 }

@@ -17,7 +17,6 @@ class CreateRepositoryBloc implements CreateRepositoryView{
   BuildContext _context;
 
   final textEditingPassword = TextEditingController();
-  final textEditingNameFile = TextEditingController();
 
 
   //----- construtor --------
@@ -29,7 +28,7 @@ class CreateRepositoryBloc implements CreateRepositoryView{
   //----- initState -----
   void initState(BuildContext context){
     this._context = context;
-    textEditingNameFile.text = _presenter.getNameFile();
+    _presenter.init();
   }
 
 
