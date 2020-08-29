@@ -29,8 +29,7 @@ class CreateRepositoryBloc implements CreateRepositoryView{
   //----- initState -----
   void initState(BuildContext context){
     this._context = context;
-    textEditingNameFile.text = "${Constants.NAME_FILE}.${Constants.TYPE_FILE}";
-    _presenter.openDirectoryPath();
+    textEditingNameFile.text = _presenter.getNameFile();
   }
 
 
@@ -44,18 +43,12 @@ class CreateRepositoryBloc implements CreateRepositoryView{
   final _blocValidatePassword = StreamController<String>();
   Stream<String> get streamValidatePassword => _blocValidatePassword.stream;
 
-  final _blocValidateName = StreamController<String>();
-  Stream<String> get streamValidateName => _blocValidateName.stream;
-
 
 
   // --------------- OpenRepository ---------------
-  void btnOpenRepository(){
-    if(validatePassword(_context, textEditingPassword.text) &
-    validateNameFile(_context, textEditingNameFile.text)) {
-      _presenter.createRepository(textEditingPassword.text,
-        textEditingNameFile.text);
-    }
+  void btnCreateRepository(){
+    if(validatePassword(_context, textEditingPassword.text))
+      _presenter.createRepository(textEditingPassword.text);
   }
 
 
@@ -69,15 +62,6 @@ class CreateRepositoryBloc implements CreateRepositoryView{
     return true;
   }
 
-  // validate Name File
-  bool validateNameFile(BuildContext context, String name){
-    if(name == null || name == '') {
-      _blocValidateName.sink.add(S.of(context).validateNameFile);
-      return false;
-    }
-    _blocValidateName.sink.add(null);
-    return true;
-  }
 
   @override
   void setPathRepository(String name){
@@ -102,6 +86,5 @@ class CreateRepositoryBloc implements CreateRepositoryView{
     _blocPathRepository.close();
     _blocRememberPassword.close();
     _blocValidatePassword.close();
-    _blocValidateName.close();
   }
 }

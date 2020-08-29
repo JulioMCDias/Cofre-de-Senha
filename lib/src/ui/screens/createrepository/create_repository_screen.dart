@@ -77,16 +77,11 @@ class _CreateRepositoryScreenState extends State<CreateRepositoryScreen> {
                             ),
                           ),
                         Expanded(
-                          child: StreamBuilder<String>(
-                            initialData: null,
-                            stream: _bloc.streamValidateName,
-                            builder:(context, snapshot) {
-                              return TextFormField(
+                          child: TextFormField(
                                 style: TextStyle(
                                   fontSize: 18, color: Colors.white),
                                 controller: _bloc.textEditingNameFile,
                                 decoration: InputDecoration(
-                                  errorText: snapshot.data,
                                   contentPadding: const EdgeInsets.only(
                                     left: 8.0),
                                   enabledBorder: OutlineInputBorder(
@@ -105,8 +100,6 @@ class _CreateRepositoryScreenState extends State<CreateRepositoryScreen> {
                                         .primaryColor)
                                   ),
                                 ),
-                              );
-                            }
                           ),
                         ),
                       ],
@@ -149,7 +142,7 @@ class _CreateRepositoryScreenState extends State<CreateRepositoryScreen> {
                   width: double.infinity,
                   child: RaisedButton(
                     onPressed: () {
-                      _bloc.btnOpenRepository();
+                      _bloc.btnCreateRepository();
                     },
                     elevation: 5,
                     padding: EdgeInsets.all(14),

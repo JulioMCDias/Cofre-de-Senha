@@ -1,28 +1,23 @@
 
 
 import 'dart:io';
+import 'package:open_file/open_file.dart';
+
 import '../utils/constants.dart' as Constants;
 
-import 'package:file_picker/file_picker.dart';
-import 'package:path_provider/path_provider.dart';
 
 class HelpFile{
 
-  // pega o local escolido pelo usuario
-  Future<String> openDirectoryPath() async =>
-    await FilePicker.getDirectoryPath();
+  // open file
+  Future<File> openFile() async =>
+    (await OpenFile.openFile(
+      type: Constants.TYPE_FILE, extension: Constants.EXTENSION_FILE)).file;
 
-  // local padrão
-  Future<String> localPath() async {
-    final directory = await getApplicationDocumentsDirectory();
-    return directory.path;
-  }
 
   // create new file
-  Future<File> createFile(String nameFile, String local) async {
-    final path = (local == null)? localPath(): local;
-    return File('$path/$nameFile.${Constants.TYPE_FILE}');
-}
+  Future<File> createFile(String extension, String name) async =>
+    (await OpenFile.createFile(Constants.TYPE_FILE, extension, name)).file;
+
 
   // write in file
   Future<File> writeFile(String message, File file) async {
@@ -33,8 +28,4 @@ class HelpFile{
   Future<String> readFile(File file) async{
     return file.readAsString();
   }
-
-  Future<File> openFileType(List<String> types) async =>
-    await FilePicker.getFile(type: FileType.custom, allowedExtensions: types);
-
 }

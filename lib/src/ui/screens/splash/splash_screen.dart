@@ -147,7 +147,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   );
                   },
               ),
-
+              CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.white)),
             ],
           ),
         ),
