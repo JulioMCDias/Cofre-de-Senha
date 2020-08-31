@@ -37,6 +37,27 @@ class OpenRepositoryBloc implements OpenRepositoryView{
   final _blocValidatePassword = StreamController<String>();
   Stream<String> get streamValidatePassword => _blocValidatePassword.stream;
 
+  final _blocLoadingVisibility = StreamController<bool>();
+      Stream<bool> get streamLoadingVisibility => _blocLoadingVisibility.stream;
+
+
+
+
+
+  // ----- carregamento visivel ------
+  @override
+  void loadingVisibility(bool enable){
+    _blocLoadingVisibility.sink.add(enable);
+  }
+
+
+  // ----- informar erro ao usario ------
+  @override
+  void infoError(e) {
+    // TODO: implement infoError
+  }
+
+
 
   void btnOpenRepository(){
     if(validatePassword(_context, textEditingPassword.text)) {
@@ -80,5 +101,6 @@ class OpenRepositoryBloc implements OpenRepositoryView{
     _blocPathRepository.close();
     _blocRememberPassword.close();
     _blocValidatePassword.close();
+    _blocLoadingVisibility.close();
   }
 }

@@ -1,7 +1,6 @@
 import 'package:cofresenha/src/data/model/book.dart';
 import 'package:cofresenha/generated/l10n.dart';
 import 'package:cofresenha/src/ui/screens/listbook/list_book_bloc.dart';
-import 'package:cofresenha/src/ui/screens/splash/splash_screen.dart';
 import 'package:cofresenha/src/ui/widget/background_decoration.dart';
 import 'package:flutter/material.dart';
 

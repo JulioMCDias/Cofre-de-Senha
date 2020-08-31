@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -41,15 +42,19 @@ class Repository {
   }
 
   // -------- ler o repositorio ---------
-  void openRepository(String password) {
+  Future<void> openRepository(String password) async {
     _crypt = Crypto(password);
 
-    _helpFile.readFile(_file).then((data) {
-      String fileString = _crypt.decryptRepository(data);
-      var listBook = json.decode(fileString) as List;
+    try {
+      String data = await _helpFile.readFile(_file);
+      String fileString = await _crypt.decryptRepository(data);
 
+      var listBook = json.decode(fileString) as List;
       _books = listBook.map((i) => Book.fromJson(i)).toList();
-    });
+
+    } on ArgumentError catch(e){
+      return Future.error(e);
+    }
   }
 
   void logoutRepository(){

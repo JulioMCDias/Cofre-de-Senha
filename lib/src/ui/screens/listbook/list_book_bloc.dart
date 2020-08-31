@@ -23,6 +23,7 @@ class ListBookBloc implements ListBookView{
   //----- initState -----
   void initState(BuildContext context){
     this._context = context;
+    _presenter.init();
   }
 
 

@@ -14,8 +14,17 @@ class OpenRepositoryPresenter{
 
 
   //---------------- OpenRepositoryPresenter -------------------
-  Future<void> openRepository(String password) async {
-    return _repository.openRepository(password);
+  void openRepository(String password) {
+    view.loadingVisibility(true);
+
+    _repository.openRepository(password).then((_) {
+      view.loadingVisibility(false);
+      view.navigationListBook();
+    }).catchError((e){
+      view.loadingVisibility(false);
+      view.infoError(e);
+    });
+
   }
 
   void init() {

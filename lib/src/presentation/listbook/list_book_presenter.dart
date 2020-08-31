@@ -14,6 +14,10 @@ class ListBookPresenter{
 
 
   //---------------- ListBookPresenter -------------------
+  void init(){
+    _updateListBook();
+  }
+
   void addBook(String book){
     _repository.addBook(book);
     _updateListBook();

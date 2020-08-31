@@ -39,7 +39,7 @@ class Crypto{
     return base64Encode(salt) + _separator + iv.base64 + _separator + repository;
   }
 
-  String decryptRepository(String data){
+  Future<String> decryptRepository(String data){
     var split = data.split( RegExp(_separator));
     if (split.length != 3) throw Exception("Passed data is incorrect. There was no IV specified with it.");
 
@@ -48,6 +48,10 @@ class Crypto{
 
     Encrypter _encrypted = _gerEncrypted(generateKey(_password, salt));
     var encrypted = Encrypted.fromBase64(split[2]);
-    return _encrypted.decrypt(encrypted, iv: iv);
+    try{
+      return Future.value(_encrypted.decrypt(encrypted, iv: iv));
+    } on ArgumentError catch(e){
+      return Future.error(e);
+    }
   }
 }
