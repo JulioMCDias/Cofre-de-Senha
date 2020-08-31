@@ -1,3 +1,4 @@
+import 'package:cofresenha/generated/l10n.dart';
 import 'package:cofresenha/src/data/model/password.dart';
 import 'package:cofresenha/src/ui/screens/listpassword/list_password_bloc.dart';
 import 'package:cofresenha/src/ui/widget/background_decoration.dart';
@@ -51,7 +52,7 @@ class _ListPasswordScreenState extends State<ListPasswordScreen> {
         height: double.infinity,
         child: Stack(
           children: [
-            loadingVisibility(_bloc.streamLoadingVisibility),
+            LoadingVisibility(_bloc.streamLoadingVisibility),
 
             Center(
               child: StreamBuilder(
@@ -61,7 +62,7 @@ class _ListPasswordScreenState extends State<ListPasswordScreen> {
                   padding: EdgeInsets.only(top: 10, left: 8, right: 8, bottom: 100),
                   itemCount: listPassword.data.length,
                   itemBuilder: (context, index){
-                    return _passwordCard(listPassword.data[index]);
+                    return _buildItem(context, listPassword.data[index], index);
                   },
                 ),
               )
@@ -77,6 +78,38 @@ class _ListPasswordScreenState extends State<ListPasswordScreen> {
       ),
     );
   }
+
+
+  // --------------- list item remove ---------
+  Widget _buildItem(context, password, index) {
+    return Dismissible(
+      key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
+      background: Container(
+        color: Colors.red,
+        child: Align(
+          alignment: Alignment(-.9, 0),
+          child: Icon(Icons.delete, color: Colors.white,),
+        ),
+      ),
+      direction: DismissDirection.startToEnd,
+      child: _passwordCard( password),
+      onDismissed: (direction) {
+        _bloc.btnRemove(password, index);
+
+        final snack = SnackBar(
+          content: Text("${S.of(context).infoBook}: ${password.name} ${S.of(context).infoBookRemoved}"),
+          action: SnackBarAction(label: S.of(context).infoUndo,
+            onPressed: (){
+              _bloc.btnRestoreItem();
+            },),
+          duration: Duration(seconds: 2),
+        );
+        Scaffold.of(context).removeCurrentSnackBar();
+        Scaffold.of(context).showSnackBar(snack);
+      }
+    );
+  }
+
 
 
   // -------------- card ----------------

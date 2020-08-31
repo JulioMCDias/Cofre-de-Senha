@@ -14,6 +14,8 @@ class ListBookPresenter{
 
 
   //---------------- ListBookPresenter -------------------
+  Book _oldBook;
+  int _posBook;
   void init(){
     _updateListBook();
   }
@@ -46,7 +48,34 @@ class ListBookPresenter{
       view.loadingVisibility(false);
       view.infoError(e);
     });
+  }
 
+  void remove(Book book, int pos) {
+    view.loadingVisibility(true);
+
+    _repository.removeItemBook(book).then((_){
+      _updateListBook();
+      view.loadingVisibility(false);
+      _oldBook = book;
+      _posBook = pos;
+
+    }).catchError((e){
+      view.loadingVisibility(false);
+      view.infoError(e);
+    });
+  }
+
+  void restoreItemBook() {
+    view.loadingVisibility(true);
+
+    _repository.restoreItemBook(_oldBook, _posBook).then((_){
+      _updateListBook();
+      view.loadingVisibility(false);
+
+    }).catchError((e){
+      view.loadingVisibility(false);
+      view.infoError(e);
+    });
   }
 
   void itemBook(Book book){

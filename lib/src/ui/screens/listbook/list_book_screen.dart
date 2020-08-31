@@ -48,22 +48,20 @@ class _ListBookScreenState extends State<ListBookScreen> {
           height: double.infinity,
           child: Stack(
             children: [
-              loadingVisibility(_bloc.streamLoadingVisibility),
+              LoadingVisibility(_bloc.streamLoadingVisibility),
 
-              Center(
-                child: StreamBuilder<List<Book>>(
-                  stream: _bloc.streamListBook,
-                  initialData: [],
-                  builder: (context, list){
-                    return ListView.builder(
-                      padding: EdgeInsets.all(10),
-                      itemCount: list.data.length,
-                      itemBuilder: (context, index){
-                        return _bookCard(context, list.data[index]);
-                      },
-                    );
-                  },
-                )
+              StreamBuilder<List<Book>>(
+                stream: _bloc.streamListBook,
+                initialData: [],
+                builder: (context, list){
+                  return ListView.builder(
+                    padding: EdgeInsets.all(10),
+                    itemCount: list.data.length,
+                    itemBuilder: (context, index){
+                      return _buildItem(context, list.data[index], index);
+                    },
+                  );
+                },
               )
             ]),
         ),
@@ -78,26 +76,60 @@ class _ListBookScreenState extends State<ListBookScreen> {
   }
 
 
-  // ---------------- card -----------------
-  Widget _bookCard(context, Book book){
-    return GestureDetector(
-      child: Card(
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15)
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Text(book.name,
-          style: TextStyle(color: Colors.indigo, fontSize: 24),
-          ),
+  // --------------- list item remove ---------
+  Widget _buildItem(context, Book book, index) {
+    return Dismissible(
+      key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
+      background: Container(
+        color: Colors.red,
+        child: Align(
+          alignment: Alignment(-.9, 0),
+          child: Icon(Icons.delete, color: Colors.white,),
         ),
       ),
-      onTap: ()=> _bloc.btnItem(book),
+      direction: DismissDirection.startToEnd,
+      child: _bookCard(context, book),
+      onDismissed: (direction) {
+        _bloc.btnRemove(book, index);
 
-      onLongPress: (){
-        showDialogAddBook(context, book: book);
-      },
+        final snack = SnackBar(
+          content: Text("${S.of(context).infoBook}: ${book.name} ${S.of(context).infoBookRemoved}"),
+          action: SnackBarAction(label: S.of(context).infoUndo,
+            onPressed: (){
+              _bloc.btnRestoreItemBook();
+            },),
+          duration: Duration(seconds: 2),
+        );
+        Scaffold.of(context).removeCurrentSnackBar();
+        Scaffold.of(context).showSnackBar(snack);
+      }
+    );
+  }
+
+
+  // ---------------- card -----------------
+  Widget _bookCard(context, Book book){
+    return Container(
+
+      child: GestureDetector(
+        child: Card(
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15)
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              title: Text(
+                book.name,
+                style: TextStyle(color: Colors.indigo, fontSize: 24),
+              ),
+            ),
+          ),
+        ),
+        onTap: ()=> _bloc.btnItem(book),
+        onLongPress: () => showDialogAddBook(context, book: book),
+      ),
     );
   }
   // ---------

@@ -47,6 +47,14 @@ class ListBookBloc implements ListBookView{
     _presenter.updateBook(book, name);
   }
 
+  void btnRemove(Book book, int pos) {
+    _presenter.remove(book, pos);
+  }
+
+  void btnRestoreItemBook() {
+    _presenter.restoreItemBook();
+  }
+
 
   // ------------- StreamControllers -----------------
   final _blocListBook = StreamController<List<Book>>();

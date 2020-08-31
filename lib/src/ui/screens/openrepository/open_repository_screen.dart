@@ -33,7 +33,7 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
         height: double.infinity,
         child: Stack(
           children:[
-            loadingVisibility(_bloc.streamLoadingVisibility),
+            LoadingVisibility(_bloc.streamLoadingVisibility),
 
             Center(
             child: SingleChildScrollView(

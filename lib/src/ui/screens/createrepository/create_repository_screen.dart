@@ -35,7 +35,7 @@ class _CreateRepositoryScreenState extends State<CreateRepositoryScreen> {
         height: double.infinity,
         child: Stack(
           children: [
-            loadingVisibility(_bloc.streamLoadingVisibility),
+            LoadingVisibility(_bloc.streamLoadingVisibility),
 
             Center(
             child: SingleChildScrollView(

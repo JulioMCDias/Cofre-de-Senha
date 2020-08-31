@@ -4,6 +4,9 @@
   "titleEditPassword": "Editar senha",
   "titleBooks": "Cadernos",
 
+  "infoBook": "Caderno",
+  "infoBookRemoved": "removido!",
+  "infoUndo": "Desfazer",
   "infoOpenRepository": "Abrir repositorio",
   "infoRepository": "Repositório:",
   "infoFileName": "Nome do arquivo:",

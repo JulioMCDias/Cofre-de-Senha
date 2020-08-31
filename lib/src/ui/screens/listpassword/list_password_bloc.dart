@@ -42,6 +42,13 @@ class ListPasswordBloc implements ListPasswordView{
     _presenter.editPassword(password);
   }
 
+  void btnRemove(password, index) {
+    _presenter.removePassword(password, index);
+  }
+
+  void btnRestoreItem() {
+    _presenter.restoreItem();
+  }
 
 
 

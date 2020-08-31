@@ -48,7 +48,7 @@ class _AddPasswordScreenState extends State<AddPasswordScreen> {
         height: double.infinity,
           child: Stack(
             children: [
-              loadingVisibility(_bloc.streamLoadingVisibility),
+              LoadingVisibility(_bloc.streamLoadingVisibility),
 
               SingleChildScrollView(
               padding: const EdgeInsets.all(25.0),

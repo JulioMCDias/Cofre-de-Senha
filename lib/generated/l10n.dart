@@ -73,6 +73,36 @@ class S {
     );
   }
 
+  /// `Caderno`
+  String get infoBook {
+    return Intl.message(
+      'Caderno',
+      name: 'infoBook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `removido!`
+  String get infoBookRemoved {
+    return Intl.message(
+      'removido!',
+      name: 'infoBookRemoved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Desfazer`
+  String get infoUndo {
+    return Intl.message(
+      'Desfazer',
+      name: 'infoUndo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Abrir repositorio`
   String get infoOpenRepository {
     return Intl.message(

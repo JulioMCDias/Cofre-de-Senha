@@ -15,6 +15,8 @@ class ListPasswordPresenter{
 
 
   //---------------- ListPasswordPresenter -------------------
+  Password _oldPassword;
+  int _pos;
   void updateList(){
     view.setListPassword(_repository.getListPassword());
   }
@@ -29,6 +31,32 @@ class ListPasswordPresenter{
 
   void editPassword(Password password){
     view.navigationScreen(password).then((value) => updateList());
+  }
+
+  void removePassword(password, index) {
+    view.loadingVisibility(true);
+    _repository.removeItemPassword(password).then((_){
+      updateList();
+      _oldPassword = password;
+      _pos = index;
+      view.loadingVisibility(false);
+
+    }).catchError((e){
+      view.infoError(e);
+      view.loadingVisibility(false);
+    });
+  }
+
+  void restoreItem() {
+    view.loadingVisibility(true);
+    _repository.restoreItemPassword(_oldPassword, _pos).then((_){
+      updateList();
+      view.loadingVisibility(false);
+
+    }).catchError((e){
+      view.infoError(e);
+      view.loadingVisibility(false);
+    });
   }
 
 }
