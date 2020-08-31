@@ -4,6 +4,8 @@ import 'package:cofresenha/src/ui/screens/addpassword/add_password_screen.dart';
 abstract class AddPasswordView{
   AddPasswordScreen screen;
   void navigationBlackScreen();
+  void loadingVisibility(bool enable);
+  void infoError(e);
 
   get title;
   get name;

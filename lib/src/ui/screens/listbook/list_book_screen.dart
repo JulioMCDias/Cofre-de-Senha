@@ -2,6 +2,7 @@ import 'package:cofresenha/src/data/model/book.dart';
 import 'package:cofresenha/generated/l10n.dart';
 import 'package:cofresenha/src/ui/screens/listbook/list_book_bloc.dart';
 import 'package:cofresenha/src/ui/widget/background_decoration.dart';
+import 'package:cofresenha/src/ui/widget/loading_visibility.dart';
 import 'package:flutter/material.dart';
 
 class ListBookScreen extends StatefulWidget {
@@ -43,23 +44,28 @@ class _ListBookScreenState extends State<ListBookScreen> {
           ],
         ),
         body: Container(
-            decoration: BackgroundDecoration(),
-            height: double.infinity,
-            child: Center(
-              child: StreamBuilder<List<Book>>(
-                stream: _bloc.streamListBook,
-                initialData: [],
-                builder: (context, list){
-                  return ListView.builder(
-                    padding: EdgeInsets.all(10),
-                    itemCount: list.data.length,
-                    itemBuilder: (context, index){
-                      return _bookCard(context, list.data[index]);
-                    },
-                  );
-                },
+          decoration: BackgroundDecoration(),
+          height: double.infinity,
+          child: Stack(
+            children: [
+              loadingVisibility(_bloc.streamLoadingVisibility),
+
+              Center(
+                child: StreamBuilder<List<Book>>(
+                  stream: _bloc.streamListBook,
+                  initialData: [],
+                  builder: (context, list){
+                    return ListView.builder(
+                      padding: EdgeInsets.all(10),
+                      itemCount: list.data.length,
+                      itemBuilder: (context, index){
+                        return _bookCard(context, list.data[index]);
+                      },
+                    );
+                  },
+                )
               )
-            )
+            ]),
         ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add, color: Colors.indigo,),

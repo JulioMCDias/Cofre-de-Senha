@@ -49,6 +49,19 @@ class ListPasswordBloc implements ListPasswordView{
   final _listPassword = StreamController<List<Password>>();
   Stream<List<Password>> get streamListPassword => _listPassword.stream;
 
+  final _blocLoadingVisibility = StreamController<bool>();
+  Stream<bool> get streamLoadingVisibility => _blocLoadingVisibility.stream;
+
+
+
+
+
+  // ----- carregamento visivel ------
+  @override
+  void loadingVisibility(bool enable){
+    _blocLoadingVisibility.sink.add(enable);
+  }
+
 
   @override
   void setListPassword(List<Password> passwords){
@@ -65,9 +78,17 @@ class ListPasswordBloc implements ListPasswordView{
   //-------
 
 
+  // -------------- informar erro ------------------
+  @override
+  void infoError(e) {
+    // TODO: implement infoError
+  }
+
+
 
   void dispose(){
     _listPassword.close();
+    _blocLoadingVisibility.close();
     _title.close();
   }
 }

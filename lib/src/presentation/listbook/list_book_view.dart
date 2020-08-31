@@ -7,4 +7,6 @@ abstract class ListBookView{
 
   void navigationListPassword();
   void setListBook(List<Book> books);
+  void loadingVisibility(bool enable);
+  void infoError(e);
 }

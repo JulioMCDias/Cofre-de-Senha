@@ -42,6 +42,19 @@ class CreateRepositoryBloc implements CreateRepositoryView{
   final _blocValidatePassword = StreamController<String>();
   Stream<String> get streamValidatePassword => _blocValidatePassword.stream;
 
+  final _blocLoadingVisibility = StreamController<bool>();
+  Stream<bool> get streamLoadingVisibility => _blocLoadingVisibility.stream;
+
+
+
+
+
+  // ----- carregamento visivel ------
+  @override
+  void loadingVisibility(bool enable){
+    _blocLoadingVisibility.sink.add(enable);
+  }
+
 
 
   // --------------- OpenRepository ---------------
@@ -80,10 +93,17 @@ class CreateRepositoryBloc implements CreateRepositoryView{
   }
 
 
+  // -------------- informar erro ------------------
+  @override
+  void infoError(e) {
+    // TODO: implement infoError
+  }
+
 
   void dispose(){
     _blocPathRepository.close();
     _blocRememberPassword.close();
     _blocValidatePassword.close();
+    _blocLoadingVisibility.close();
   }
 }

@@ -52,6 +52,19 @@ class ListBookBloc implements ListBookView{
   final _blocListBook = StreamController<List<Book>>();
   Stream<List<Book>> get streamListBook => _blocListBook.stream;
 
+  final _blocLoadingVisibility = StreamController<bool>();
+  Stream<bool> get streamLoadingVisibility => _blocLoadingVisibility.stream;
+
+
+
+
+
+  // ----- carregamento visivel ------
+  @override
+  void loadingVisibility(bool enable){
+    _blocLoadingVisibility.sink.add(enable);
+  }
+
 
   @override
   void setListBook(List<Book> books){
@@ -65,7 +78,16 @@ class ListBookBloc implements ListBookView{
     );
   }
 
+
+  // -------------- informar erro ------------------
+  @override
+  void infoError(e) {
+    // TODO: implement infoError
+  }
+
+
   void dispose(){
     _blocListBook.close();
+    _blocLoadingVisibility.close();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:cofresenha/src/data/model/password.dart';
 import 'package:cofresenha/src/ui/screens/listpassword/list_password_bloc.dart';
 import 'package:cofresenha/src/ui/widget/background_decoration.dart';
+import 'package:cofresenha/src/ui/widget/loading_visibility.dart';
 import 'package:cofresenha/src/ui/widget/text_form_field_password.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -48,19 +49,24 @@ class _ListPasswordScreenState extends State<ListPasswordScreen> {
       body: Container(
         decoration: BackgroundDecoration(),
         height: double.infinity,
-        child: Center(
-          child: StreamBuilder(
-            initialData: List<Password>(),
-            stream: _bloc.streamListPassword,
-            builder: (context, listPassword) => ListView.builder(
-              padding: EdgeInsets.only(top: 10, left: 8, right: 8, bottom: 100),
-              itemCount: listPassword.data.length,
-              itemBuilder: (context, index){
-                return _passwordCard(listPassword.data[index]);
-              },
+        child: Stack(
+          children: [
+            loadingVisibility(_bloc.streamLoadingVisibility),
+
+            Center(
+              child: StreamBuilder(
+                initialData: List<Password>(),
+                stream: _bloc.streamListPassword,
+                builder: (context, listPassword) => ListView.builder(
+                  padding: EdgeInsets.only(top: 10, left: 8, right: 8, bottom: 100),
+                  itemCount: listPassword.data.length,
+                  itemBuilder: (context, index){
+                    return _passwordCard(listPassword.data[index]);
+                  },
+                ),
+              )
             ),
-          )
-        )
+          ]),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add, color: Colors.indigo,),

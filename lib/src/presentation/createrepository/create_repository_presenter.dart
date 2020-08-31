@@ -14,8 +14,14 @@ class CreateRepositoryPresenter{
 
   // ------------- CreateRepositoryPresenter -------------------
   void createRepository(String password){
-      _repository.createRepository(password);
-      view.navigationListBook();
+    view.loadingVisibility(true);
+      _repository.createRepository(password).then((_){
+        view.navigationListBook();
+        view.loadingVisibility(false);
+      }).catchError((e){
+        view.infoError(e);
+        view.loadingVisibility(false);
+      });
   }
 
 

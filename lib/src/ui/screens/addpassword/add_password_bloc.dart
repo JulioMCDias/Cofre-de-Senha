@@ -20,6 +20,7 @@ class AddPasswordBloc implements AddPasswordView{
   //----- initState -----
   void initState(BuildContext context){
     this._context = context;
+    _presenter.init();
   }
 
 
@@ -40,13 +41,25 @@ class AddPasswordBloc implements AddPasswordView{
   final _textEditingDescription = TextEditingController();
     get textEditingDescription => _textEditingDescription;
 
+  final _blocLoadingVisibility = StreamController<bool>();
+  Stream<bool> get streamLoadingVisibility => _blocLoadingVisibility.stream;
+
+
+
+
+  // ----- carregamento visivel ------
+  @override
+  void loadingVisibility(bool enable){
+    _blocLoadingVisibility.sink.add(enable);
+  }
+
 
 
   //---------------------------------------------------------------
   @override
   get title => _textEditingTitle.text;
   @override
-  set title(title) => _textEditingName.text = title;
+  set title(title) => _textEditingTitle.text = title;
 
   @override
   get name => _textEditingName.text;
@@ -56,17 +69,17 @@ class AddPasswordBloc implements AddPasswordView{
   @override
   get email => _textEditingEmail.text;
   @override
-  set email(email) => _textEditingName.text = email;
+  set email(email) => _textEditingEmail.text = email;
 
   @override
   get password => _textEditingPassword.text;
   @override
-  set password(password) => _textEditingName.text = password;
+  set password(password) => _textEditingPassword.text = password;
 
   @override
   get description => _textEditingDescription.text;
   @override
-  set description(description) => _textEditingName.text = description;
+  set description(description) => _textEditingDescription.text = description;
 
   @override
   void navigationBlackScreen(){
@@ -113,10 +126,17 @@ class AddPasswordBloc implements AddPasswordView{
   }
 
 
+  // -------------- informar erro ------------------
+  @override
+  void infoError(e) {
+    // TODO: implement infoError
+  }
+
 
   void dispose(){
     _validateTitle.close();
     _validateEmail.close();
     _validatePassword.close();
+    _blocLoadingVisibility.close();
   }
 }

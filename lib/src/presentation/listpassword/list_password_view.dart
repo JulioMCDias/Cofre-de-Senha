@@ -8,4 +8,6 @@ abstract class ListPasswordView{
   void setListPassword(List<Password> passwords);
   void setTitle(String title);
   Future<void> navigationScreen(Password password);
+  void loadingVisibility(bool enable);
+  void infoError(e);
 }

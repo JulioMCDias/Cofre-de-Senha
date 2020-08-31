@@ -16,8 +16,7 @@ class AddPasswordPresenter{
 
 
   //---------------- AddPasswordPresenter -------------------
-  void setPassword(Password password){
-    this.password = password;
+  void init(){
     if(password != null){
       view.title = password.title;
       view.name = password.name;
@@ -28,13 +27,19 @@ class AddPasswordPresenter{
   }
 
   void save(){
+    view.loadingVisibility(true);
+
     if(password == null){
       _repository.addPassword(Password()
         ..title = view.title
         ..name = view.name
         ..email = view.email
         ..password = view.password
-        ..description = view.description);
+        ..description = view.description).then((_){
+        view.navigationBlackScreen();
+      }).catchError((e){
+        view.infoError(e);
+      });
 
     }else {
       password
@@ -43,9 +48,12 @@ class AddPasswordPresenter{
         ..email = view.email
         ..password = view.password
         ..description = view.description;
+
+      _repository.updatePassword().then((_){
+        view.navigationBlackScreen();
+      }).catchError((e){
+        view.infoError(e);
+      });
     }
-    view.navigationBlackScreen();
   }
-
-
 }

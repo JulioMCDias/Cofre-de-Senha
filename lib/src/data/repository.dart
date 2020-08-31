@@ -35,10 +35,14 @@ class Repository {
   String getPathFile() => _file.path;
 
   // --------- cria o repositorio --------
-  void createRepository(String password) {
-    _crypt = Crypto(password);
-    _books = List<Book>();
-    updateFile();
+  Future<void> createRepository(String password) async {
+    try{
+      _crypt = Crypto(password);
+      _books = List<Book>();
+      updateFile();
+    }catch(e) {
+      return Future.error(e);
+    }
   }
 
   // -------- ler o repositorio ---------
@@ -64,36 +68,55 @@ class Repository {
   }
 
   // ------------update file ---------------
-  void updateFile() {
+  void updateFile() async {
     String data = jsonEncode(_books);
     String fileString = _crypt.encryptRepositoryBase64(data);
-    _helpFile.writeFile(fileString, _file);
+    await _helpFile.writeFile(fileString, _file);
   }
+
+
 
   // -------- book --------------
   List<Book> getListBook() {
     return _books;
   }
 
-  void addBook(String book) {
-    _books.add(Book(name: book));
-    updateFile();
+  Future<void> addBook(String book) async {
+    try{
+      _books.add(Book(name: book));
+      updateFile();
+    } catch(e){
+      return Future.error(e);
+    }
   }
 
-  void updateBook(Book book, String name) {
-    var pos = _books.indexOf(book);
-    _books[pos].name = name;
-    updateFile();
+
+  Future<void> updateBook(Book book, String name) async {
+    try {
+      var pos = _books.indexOf(book);
+      _books[pos].name = name;
+      updateFile();
+    }catch(e) {
+      return Future.error(e);
+    }
   }
 
-  void removeItemBook(Book book) {
-    _books.remove(book);
-    updateFile();
+  Future<void> removeItemBook(Book book) async {
+    try {
+      _books.remove(book);
+      updateFile();
+    }catch(e) {
+      return Future.error(e);
+    }
   }
 
-  void restoreItemBook(Book book, int position) {
-    _books.insert(position, book);
-    updateFile();
+  Future<void> restoreItemBook(Book book, int position) async {
+    try {
+      _books.insert(position, book);
+      updateFile();
+    }catch(e) {
+      return Future.error(e);
+    }
   }
 
   //--------- Password -----------
@@ -103,30 +126,51 @@ class Repository {
     return (_books.where((item) => item.name == name)).single.passwords ?? List<Password>();
   }
 
-  void addPassword(Password password) {
-    List<Password> passwords =
-        (_books.where((item) => item.name == bookName)).single.passwords;
-    if (passwords == null) {
-      var list = List<Password>();
-      list.add(password);
-      (_books.where((item) => item.name == bookName)).single.passwords = list;
-    } else
-      passwords.add(password);
-    updateFile();
+  Future<void> addPassword(Password password) async {
+    try{
+      List<Password> passwords =
+          (_books.where((item) => item.name == bookName)).single.passwords;
+      if (passwords == null) {
+        var list = List<Password>();
+        list.add(password);
+        (_books.where((item) => item.name == bookName)).single.passwords = list;
+      } else
+        passwords.add(password);
+      updateFile();
+
+    }catch(e) {
+      return Future.error(e);
+    }
   }
 
-  void removeItemPassword(Password password) {
-    (_books.where((item) => item.name == bookName))
-      .single.passwords
-      .remove(password);
-    updateFile();
+  Future<void> updatePassword() async {
+    try{
+      updateFile();
+    }catch(e) {
+      return Future.error(e);
+    }
   }
 
-  void restoreItemPassword(Password password, int position) {
-    (_books.where((item) => item.name == bookName))
-      .single.passwords
-      .insert(position, password);
-    updateFile();
+  Future<void> removeItemPassword(Password password) async {
+    try{
+      (_books.where((item) => item.name == bookName))
+        .single.passwords
+        .remove(password);
+      updateFile();
+    }catch(e) {
+      return Future.error(e);
+    }
+  }
+
+  Future<void> restoreItemPassword(Password password, int position) async {
+    try{
+      (_books.where((item) => item.name == bookName))
+        .single.passwords
+        .insert(position, password);
+      updateFile();
+    }catch(e) {
+      return Future.error(e);
+    }
   }
 
   Password getPassword(String title) {

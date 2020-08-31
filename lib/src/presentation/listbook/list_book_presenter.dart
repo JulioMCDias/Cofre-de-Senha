@@ -19,8 +19,16 @@ class ListBookPresenter{
   }
 
   void addBook(String book){
-    _repository.addBook(book);
-    _updateListBook();
+    view.loadingVisibility(true);
+
+    _repository.addBook(book).then((_) {
+      _updateListBook();
+      view.loadingVisibility(false);
+
+    }).catchError((e){
+      view.loadingVisibility(false);
+      view.infoError(e);
+    });
   }
 
   void _updateListBook(){
@@ -28,8 +36,17 @@ class ListBookPresenter{
   }
 
   void updateBook(Book book, String name){
-    _repository.updateBook(book, name);
-    _updateListBook();
+    view.loadingVisibility(true);
+
+    _repository.updateBook(book, name).then((_){
+      _updateListBook();
+      view.loadingVisibility(false);
+
+    }).catchError((e){
+      view.loadingVisibility(false);
+      view.infoError(e);
+    });
+
   }
 
   void itemBook(Book book){

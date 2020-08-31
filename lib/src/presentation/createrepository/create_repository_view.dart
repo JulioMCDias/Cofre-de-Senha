@@ -8,4 +8,6 @@ abstract class CreateRepositoryView{
   void setPathRepository(String name);
   void setRememberPassword(bool remember);
   void navigationListBook();
+  void loadingVisibility(bool enable);
+  void infoError(e);
 }

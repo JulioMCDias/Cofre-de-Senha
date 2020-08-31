@@ -1,6 +1,7 @@
 import 'package:cofresenha/generated/l10n.dart';
 import 'package:cofresenha/src/ui/screens/createrepository/create_repository_bloc.dart';
 import 'package:cofresenha/src/ui/widget/background_decoration.dart';
+import 'package:cofresenha/src/ui/widget/loading_visibility.dart';
 import 'package:cofresenha/src/ui/widget/text_form_field_password.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,111 +33,118 @@ class _CreateRepositoryScreenState extends State<CreateRepositoryScreen> {
       body: Container(
         decoration: BackgroundDecoration(),
         height: double.infinity,
-        child: Center(
-          child: Container(
-            margin: EdgeInsets.symmetric(vertical: 25, horizontal: 45),
-            width: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0, bottom: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+        child: Stack(
+          children: [
+            loadingVisibility(_bloc.streamLoadingVisibility),
+
+            Center(
+            child: SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 25, horizontal: 45),
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0, bottom: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 4.0),
+                                child: Text(S.of(context).infoRepository,
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(fontSize: 20, color: Colors.white),
+                                    ),
+                              ),
+                            Expanded(
+                              child: StreamBuilder<String>(
+                                initialData: "",
+                                stream: _bloc.streamPathRepository,
+                                builder: (context, snapshot) {
+                                  return Text(snapshot.data,
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(fontSize: 18, color: Colors.white),
+                            );
+                                }
+                              )
+                            )
+                          ],
+                        ),
+                    ),
+                    StreamBuilder<String>(
+                      initialData: null,
+                      stream: _bloc.streamValidatePassword,
+                      builder:(context, snapshot) {
+                      return TextFormFieldPassword(
+                        errorText: snapshot.data,
+                        color: Theme.of(context).primaryColor,
+                        controller: _bloc.textEditingPassword,
+                      );}
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 4.0),
-                            child: Text(S.of(context).infoRepository,
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(fontSize: 20, color: Colors.white),
-                                ),
-                          ),
-                        Expanded(
-                          child: StreamBuilder<String>(
-                            initialData: "",
-                            stream: _bloc.streamPathRepository,
-                            builder: (context, snapshot) {
-                              return Text(snapshot.data,
-                                textAlign: TextAlign.start,
-                                style: TextStyle(fontSize: 18, color: Colors.white),
-                        );
-                            }
-                          )
+                        StreamBuilder<bool>(
+                          stream: _bloc.streamRememberPassword,
+                          initialData: false,
+                          builder: (context, snapshot){
+                            return Checkbox(
+                              value: snapshot.data,
+                              checkColor: Colors.blue,
+                              activeColor: Colors.white,
+                              onChanged: (value) => _bloc.setRememberPassword(value),
+                            );},
+                        ),
+                        Text(
+                          S.of(context).checkBoxPassword,
+                          style: TextStyle(color: Colors.white),
                         )
                       ],
                     ),
-                ),
-                StreamBuilder<String>(
-                  initialData: null,
-                  stream: _bloc.streamValidatePassword,
-                  builder:(context, snapshot) {
-                  return TextFormFieldPassword(
-                    errorText: snapshot.data,
-                    color: Theme.of(context).primaryColor,
-                    controller: _bloc.textEditingPassword,
-                  );}
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    StreamBuilder<bool>(
-                      stream: _bloc.streamRememberPassword,
-                      initialData: false,
-                      builder: (context, snapshot){
-                        return Checkbox(
-                          value: snapshot.data,
-                          checkColor: Colors.blue,
-                          activeColor: Colors.white,
-                          onChanged: (value) => _bloc.setRememberPassword(value),
-                        );},
+
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        vertical: 25),
+                      width: double.infinity,
+                      child: RaisedButton(
+                        onPressed: () {
+                          _bloc.btnCreateRepository();
+                        },
+                        elevation: 5,
+                        padding: EdgeInsets.all(20),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)),
+                        color: Colors.white,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Stack(
+                                children: [
+                                  Icon(
+                                    Icons.note_add,
+                                    color: Colors.indigo,
+                                  ),
+                                  Center(
+                                    child: Text(
+                                      S.of(context).btnNewRepository,
+                                      style: TextStyle(fontSize: 20,
+                                        color: Colors.indigo),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    Text(
-                      S.of(context).checkBoxPassword,
-                      style: TextStyle(color: Colors.white),
-                    )
                   ],
                 ),
-
-                Container(
-                  margin: EdgeInsets.symmetric(
-                    vertical: 25),
-                  width: double.infinity,
-                  child: RaisedButton(
-                    onPressed: () {
-                      _bloc.btnCreateRepository();
-                    },
-                    elevation: 5,
-                    padding: EdgeInsets.all(20),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25)),
-                    color: Colors.white,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Stack(
-                            children: [
-                              Icon(
-                                Icons.folder_open,
-                                color: Colors.indigo,
-                              ),
-                              Center(
-                                child: Text(
-                                  S.of(context).btnOpenRepository,
-                                  style: TextStyle(fontSize: 20,
-                                    color: Colors.indigo),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
+        ]),
       ),
     );
   }
