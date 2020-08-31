@@ -17,11 +17,20 @@ class ListPasswordScreen extends StatefulWidget {
 
 class _ListPasswordScreenState extends State<ListPasswordScreen> {
   ListPasswordBloc _bloc;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     _bloc = widget._bloc;
     _bloc.initState(context);
+
+    _bloc.infoError = (String value) {
+      final snack = SnackBar(
+        content: Text(value), duration: Duration(seconds: 2));
+      _scaffoldKey.currentState.removeCurrentSnackBar();
+      _scaffoldKey.currentState.showSnackBar(snack);
+    };
+
     super.initState();
   }
 
@@ -29,6 +38,7 @@ class _ListPasswordScreenState extends State<ListPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         title: StreamBuilder(

@@ -9,5 +9,5 @@ abstract class ListPasswordView{
   void setTitle(String title);
   Future<void> navigationScreen(Password password);
   void loadingVisibility(bool enable);
-  void infoError(e);
+  Function(String) infoError;
 }

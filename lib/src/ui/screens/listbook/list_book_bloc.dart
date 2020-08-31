@@ -27,6 +27,11 @@ class ListBookBloc implements ListBookView{
   }
 
 
+  // ----- informar erro ao usario ------
+  @override
+  Function(String) infoError;
+
+
   //----------------------- btn ------------------------------
   void btnLogout(){
     _presenter.logoutRepository();
@@ -84,13 +89,6 @@ class ListBookBloc implements ListBookView{
     Navigator.push(_context,
       MaterialPageRoute(builder: (context) => ListPasswordPresenter().view.screen)
     );
-  }
-
-
-  // -------------- informar erro ------------------
-  @override
-  void infoError(e) {
-    // TODO: implement infoError
   }
 
 

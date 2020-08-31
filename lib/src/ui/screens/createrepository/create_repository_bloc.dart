@@ -32,6 +32,11 @@ class CreateRepositoryBloc implements CreateRepositoryView{
   }
 
 
+  // ----- informar erro ao usario ------
+  @override
+  Function(String) infoError;
+
+
   // ------------- StreamControllers -----------------
   final _blocPathRepository = StreamController<String>();
   Stream<String> get streamPathRepository => _blocPathRepository.stream;
@@ -66,7 +71,7 @@ class CreateRepositoryBloc implements CreateRepositoryView{
 
   // validate password
   bool validatePassword(BuildContext context, String password){
-    if(password == null || password == '') {
+    if(password == null || password == "") {
       _blocValidatePassword.sink.add(S.of(context).validatePassword);
       return false;
     }
@@ -90,13 +95,6 @@ class CreateRepositoryBloc implements CreateRepositoryView{
     Navigator.of(_context).pushReplacement(
       MaterialPageRoute(builder: (context) => ListBookPresenter().view.screen)
     );
-  }
-
-
-  // -------------- informar erro ------------------
-  @override
-  void infoError(e) {
-    // TODO: implement infoError
   }
 
 

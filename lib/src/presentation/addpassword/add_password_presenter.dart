@@ -38,7 +38,7 @@ class AddPasswordPresenter{
         ..description = view.description).then((_){
         view.navigationBlackScreen();
       }).catchError((e){
-        view.infoError(e);
+        view.infoError(e.toString());
       });
 
     }else {
@@ -52,7 +52,7 @@ class AddPasswordPresenter{
       _repository.updatePassword().then((_){
         view.navigationBlackScreen();
       }).catchError((e){
-        view.infoError(e);
+        view.infoError(e.toString());
       });
     }
   }

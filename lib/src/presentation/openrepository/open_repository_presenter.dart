@@ -14,7 +14,7 @@ class OpenRepositoryPresenter{
 
 
   //---------------- OpenRepositoryPresenter -------------------
-  void openRepository(String password) {
+  void openRepository(String password) async{
     view.loadingVisibility(true);
 
     _repository.openRepository(password).then((_) {
@@ -22,7 +22,7 @@ class OpenRepositoryPresenter{
       view.navigationListBook();
     }).catchError((e){
       view.loadingVisibility(false);
-      view.infoError(e);
+      view.infoError(e.toString());
     });
 
   }

@@ -5,7 +5,7 @@ abstract class AddPasswordView{
   AddPasswordScreen screen;
   void navigationBlackScreen();
   void loadingVisibility(bool enable);
-  void infoError(e);
+  Function(String) infoError;
 
   get title;
   get name;

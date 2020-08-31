@@ -15,11 +15,20 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   SplashBloc _bloc;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     _bloc = widget._bloc;
     _bloc.context = context;
+
+    _bloc.infoError = (String value) {
+      final snack = SnackBar(
+        content: Text(value), duration: Duration(seconds: 2));
+      _scaffoldKey.currentState.removeCurrentSnackBar();
+      _scaffoldKey.currentState.showSnackBar(snack);
+    };
+
     super.initState();
   }
 
@@ -27,6 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: Container(
         decoration: BackgroundDecoration(),
         height: double.infinity,
@@ -152,6 +162,12 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
+  }
+
+  void errorInfo(e){
+    final snack = SnackBar(content: Text(e), duration: Duration(seconds: 2));
+    Scaffold.of(context).removeCurrentSnackBar();
+    Scaffold.of(context).showSnackBar(snack);
   }
 
   @override

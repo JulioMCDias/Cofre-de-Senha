@@ -9,5 +9,5 @@ abstract class CreateRepositoryView{
   void setRememberPassword(bool remember);
   void navigationListBook();
   void loadingVisibility(bool enable);
-  void infoError(e);
+  Function(String) infoError;
 }

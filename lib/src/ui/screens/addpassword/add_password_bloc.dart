@@ -23,6 +23,9 @@ class AddPasswordBloc implements AddPasswordView{
     _presenter.init();
   }
 
+  // ----- informar erro ao usario ------
+  @override
+  Function(String) infoError;
 
 
 // ------------- StreamControllers -----------------
@@ -123,13 +126,6 @@ class AddPasswordBloc implements AddPasswordView{
     bool valid = !(_textEditingPassword.text == null || _textEditingPassword.text == "");
     _validatePassword.sink.add(valid ? null : S.of(_context).validatePassword);
     return valid;
-  }
-
-
-  // -------------- informar erro ------------------
-  @override
-  void infoError(e) {
-    // TODO: implement infoError
   }
 
 

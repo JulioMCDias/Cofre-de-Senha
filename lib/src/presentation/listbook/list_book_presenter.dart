@@ -29,7 +29,7 @@ class ListBookPresenter{
 
     }).catchError((e){
       view.loadingVisibility(false);
-      view.infoError(e);
+      view.infoError(e.toString());
     });
   }
 
@@ -46,7 +46,7 @@ class ListBookPresenter{
 
     }).catchError((e){
       view.loadingVisibility(false);
-      view.infoError(e);
+      view.infoError(e.toString());
     });
   }
 
@@ -61,7 +61,7 @@ class ListBookPresenter{
 
     }).catchError((e){
       view.loadingVisibility(false);
-      view.infoError(e);
+      view.infoError(e.toString());
     });
   }
 
@@ -74,7 +74,7 @@ class ListBookPresenter{
 
     }).catchError((e){
       view.loadingVisibility(false);
-      view.infoError(e);
+      view.infoError(e.toString());
     });
   }
 

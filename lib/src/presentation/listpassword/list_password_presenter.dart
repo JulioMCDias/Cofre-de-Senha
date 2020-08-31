@@ -42,7 +42,7 @@ class ListPasswordPresenter{
       view.loadingVisibility(false);
 
     }).catchError((e){
-      view.infoError(e);
+      view.infoError(e.toString());
       view.loadingVisibility(false);
     });
   }
@@ -54,7 +54,7 @@ class ListPasswordPresenter{
       view.loadingVisibility(false);
 
     }).catchError((e){
-      view.infoError(e);
+      view.infoError(e.toString());
       view.loadingVisibility(false);
     });
   }

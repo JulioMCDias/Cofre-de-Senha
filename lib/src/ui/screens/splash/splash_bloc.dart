@@ -21,6 +21,12 @@ class SplashBloc implements SplashView{
   }
 
 
+  // ----- informar erro ao usario ------
+  @override
+  Function(String) infoError;
+
+
+
   // ------------- StreamControllers -----------------
   final _blocMove = StreamController<bool>();
   Stream<bool> get streamMove => _blocMove.stream;

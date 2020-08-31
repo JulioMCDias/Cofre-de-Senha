@@ -5,5 +5,5 @@ abstract class SplashView{
   SplashScreen screen;
   void navigationOpenRepository();
   void navigationNewRepository();
-
+  Function(String) infoError;
 }

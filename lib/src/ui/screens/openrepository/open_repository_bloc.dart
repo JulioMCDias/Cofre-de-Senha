@@ -27,6 +27,12 @@ class OpenRepositoryBloc implements OpenRepositoryView{
     _presenter.init();
   }
 
+
+  // ----- informar erro ao usario ------
+  @override
+  Function(String) infoError;
+
+
   // ------------- StreamControllers -----------------
   final _blocPathRepository = StreamController<String>();
   Stream<String> get streamPathRepository => _blocPathRepository.stream;
@@ -42,19 +48,10 @@ class OpenRepositoryBloc implements OpenRepositoryView{
 
 
 
-
-
   // ----- carregamento visivel ------
   @override
   void loadingVisibility(bool enable){
     _blocLoadingVisibility.sink.add(enable);
-  }
-
-
-  // ----- informar erro ao usario ------
-  @override
-  void infoError(e) {
-    // TODO: implement infoError
   }
 
 

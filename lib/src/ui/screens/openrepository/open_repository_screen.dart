@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:cofresenha/generated/l10n.dart';
 import 'package:cofresenha/src/ui/screens/openrepository/open_repository_bloc.dart';
 import 'package:cofresenha/src/ui/widget/background_decoration.dart';
@@ -16,18 +18,27 @@ class OpenRepositoryScreen extends StatefulWidget {
 
 class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
   OpenRepositoryBloc _bloc;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     _bloc = widget._bloc;
     _bloc.initState(context);
+
+    _bloc.infoError = (String value) {
+      final snack = SnackBar(
+        content: Text(value), duration: Duration(seconds: 2));
+      _scaffoldKey.currentState.removeCurrentSnackBar();
+      _scaffoldKey.currentState.showSnackBar(snack);
+    };
+
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: Container(
         decoration: BackgroundDecoration(),
         height: double.infinity,
@@ -58,9 +69,16 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
                       ),
                     ),
 
-                    TextFormFieldPassword(
-                      color: Theme.of(context).primaryColor,
-                      controller: _bloc.textEditingPassword,
+                    StreamBuilder<String>(
+                      initialData: null,
+                      stream: _bloc.streamValidatePassword,
+                      builder:(context, snapshot) {
+                        return TextFormFieldPassword(
+                          errorText: snapshot.data,
+                          color: Theme.of(context).primaryColor,
+                          controller: _bloc.textEditingPassword,
+                        );
+                      }
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -118,6 +136,7 @@ class _OpenRepositoryScreenState extends State<OpenRepositoryScreen> {
                         ),
                       ),
                     ),
+
                   ],
                 ),
               ),

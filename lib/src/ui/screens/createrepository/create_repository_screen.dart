@@ -17,11 +17,20 @@ class CreateRepositoryScreen extends StatefulWidget {
 
 class _CreateRepositoryScreenState extends State<CreateRepositoryScreen> {
   CreateRepositoryBloc _bloc;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     _bloc = widget._bloc;
     _bloc.initState(context);
+
+    _bloc.infoError = (String value) {
+      final snack = SnackBar(
+        content: Text(value), duration: Duration(seconds: 2));
+      _scaffoldKey.currentState.removeCurrentSnackBar();
+      _scaffoldKey.currentState.showSnackBar(snack);
+    };
+
     super.initState();
   }
 
@@ -30,6 +39,7 @@ class _CreateRepositoryScreenState extends State<CreateRepositoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: Container(
         decoration: BackgroundDecoration(),
         height: double.infinity,

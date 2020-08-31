@@ -10,5 +10,5 @@ abstract class OpenRepositoryView{
 
   void navigationListBook();
 
-  void infoError(e);
+  Function(String) infoError;
 }

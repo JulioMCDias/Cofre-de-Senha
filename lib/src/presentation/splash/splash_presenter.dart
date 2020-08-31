@@ -23,7 +23,9 @@ class SplashPresenter{
           _repository.setFile(file);
           view.navigationNewRepository();
         }
-      });
+      }).catchError((e){
+        view.infoError(e.toString());
+    });
 
   }
 
@@ -33,6 +35,8 @@ class SplashPresenter{
         _repository.setFile(file);
         view.navigationOpenRepository();
       }
+    }).catchError((e){
+      view.infoError(e.toString());
     });
   }
 }

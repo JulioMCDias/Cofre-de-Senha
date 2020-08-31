@@ -27,6 +27,11 @@ class ListPasswordBloc implements ListPasswordView{
   }
 
 
+  // ----- informar erro ao usario ------
+  @override
+  Function(String) infoError;
+
+
   @override
   Future<void> navigationScreen(Password password) async {
     return await Navigator.push(_context,
@@ -83,14 +88,6 @@ class ListPasswordBloc implements ListPasswordView{
     _title.sink.add(title);
   }
   //-------
-
-
-  // -------------- informar erro ------------------
-  @override
-  void infoError(e) {
-    // TODO: implement infoError
-  }
-
 
 
   void dispose(){
