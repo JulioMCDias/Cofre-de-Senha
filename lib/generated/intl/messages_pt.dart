@@ -23,7 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "btnCancel" : MessageLookupByLibrary.simpleMessage("Cancelar"),
     "btnNewRepository" : MessageLookupByLibrary.simpleMessage("Criar Repositório"),
-    "btnOpenRepository" : MessageLookupByLibrary.simpleMessage("Abrir"),
+    "btnOpen" : MessageLookupByLibrary.simpleMessage("Abrir"),
+    "btnOpenRepository" : MessageLookupByLibrary.simpleMessage("Abrir Repositório"),
     "btnSave" : MessageLookupByLibrary.simpleMessage("Salvar"),
     "checkBoxBiometric" : MessageLookupByLibrary.simpleMessage("usar biometria"),
     "checkBoxPassword" : MessageLookupByLibrary.simpleMessage("Relembrar senha"),

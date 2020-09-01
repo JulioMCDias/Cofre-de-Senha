@@ -13,4 +13,6 @@ abstract class OpenRepositoryView{
   Function(String) infoError;
   set password(password);
   bool get rememberPassword;
+
+  void setListRepository(List<String> paths);
 }

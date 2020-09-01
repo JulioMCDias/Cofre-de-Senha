@@ -30,13 +30,6 @@ class SplashPresenter{
   }
 
   void openRepository(){
-    _helpFile.openFile().then((file) {
-      if(file != null) {
-        _repository.setFile(file);
-        view.navigationOpenRepository();
-      }
-    }).catchError((e){
-      view.infoError(e.toString());
-    });
+    view.navigationOpenRepository();
   }
 }

@@ -20,7 +20,8 @@
   "hintPassword": "Enter com a senha do repositorio",
   "fieldDescription": "Descrição",
 
-  "btnOpenRepository": "Abrir",
+  "btnOpen": "Abrir",
+  "btnOpenRepository": "Abrir Repositório",
   "btnNewRepository": "Criar Repositório",
   "btnCancel": "Cancelar",
   "btnSave": "Salvar",

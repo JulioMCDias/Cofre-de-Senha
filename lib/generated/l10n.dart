@@ -224,9 +224,19 @@ class S {
   }
 
   /// `Abrir`
-  String get btnOpenRepository {
+  String get btnOpen {
     return Intl.message(
       'Abrir',
+      name: 'btnOpen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Abrir Repositório`
+  String get btnOpenRepository {
+    return Intl.message(
+      'Abrir Repositório',
       name: 'btnOpenRepository',
       desc: '',
       args: [],

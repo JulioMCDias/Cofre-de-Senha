@@ -24,6 +24,7 @@ class _CreateRepositoryScreenState extends State<CreateRepositoryScreen> {
     _bloc = widget._bloc;
     _bloc.initState(context);
 
+    // -------- info error -----------
     _bloc.infoError = (String value) {
       final snack = SnackBar(
         content: Text(value), duration: Duration(seconds: 2));

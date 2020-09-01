@@ -14,6 +14,7 @@ class OpenRepositoryBloc implements OpenRepositoryView{
   BuildContext _context;
 
   final textEditingPassword = TextEditingController();
+
   @override
   set password(password) => textEditingPassword.text = password;
 
@@ -51,6 +52,36 @@ class OpenRepositoryBloc implements OpenRepositoryView{
   final _blocLoadingVisibility = StreamController<bool>();
   Stream<bool> get streamLoadingVisibility => _blocLoadingVisibility.stream;
 
+  final _blocListRepository = StreamController<List<String>>();
+  Stream<List<String>> get streamListRepository => _blocListRepository.stream;
+
+
+
+
+
+  //--------------- list repository path -------------
+  void btnOpenRepository(){
+    _presenter.openRepositoryPath();
+  }
+
+  void setListRepository(List<String> repository){
+    _blocListRepository.sink.add(repository);
+  }
+
+  void btnItemPath(String path) {
+    _presenter.setItemPath(path);
+  }
+
+  void btnRemovePath(String path, int index) {
+    _presenter.removePath(path, index);
+  }
+
+  void btnRestoreItemPath() {
+    _presenter.restoreItemPath();
+  }
+
+
+
 
 
   // ----- carregamento visivel ------
@@ -61,9 +92,9 @@ class OpenRepositoryBloc implements OpenRepositoryView{
 
 
 
-  void btnOpenRepository(){
+  void btnOpen(){
     if(validatePassword(_context, textEditingPassword.text)) {
-      _presenter.openRepository(textEditingPassword.text);
+      _presenter.open(textEditingPassword.text);
     }
   }
 
@@ -105,5 +136,6 @@ class OpenRepositoryBloc implements OpenRepositoryView{
     _blocRememberPassword.close();
     _blocValidatePassword.close();
     _blocLoadingVisibility.close();
+    _blocListRepository.close();
   }
 }

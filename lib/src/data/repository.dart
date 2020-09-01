@@ -95,7 +95,7 @@ class Repository {
   }
 
   Future<List<String>> historicFilePath() async{
-    return _preferenceHelper.getHistoric();
+    return _preferenceHelper.getHistoric() ?? Future.value(List<String>());
   }
 
 
