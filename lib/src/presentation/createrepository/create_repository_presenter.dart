@@ -11,21 +11,47 @@ class CreateRepositoryPresenter{
     view = CreateRepositoryBloc(this);
   }
 
-
+  final String pass="*****";
   // ------------- CreateRepositoryPresenter -------------------
+  String _password;
+
   void createRepository(String password){
     view.loadingVisibility(true);
-      _repository.createRepository(password).then((_){
-        view.navigationListBook();
-        view.loadingVisibility(false);
-      }).catchError((e){
-        view.infoError(e.toString());
-        view.loadingVisibility(false);
-      });
+    String p = (view.rememberPassword && _password != null) ?
+    _password : password;
+
+    _createRepository(p);
+  }
+
+
+  void _createRepository(String password){
+    _repository.createRepository(password).then((_){
+      _setRememberPassword(password);
+      view.navigationListBook();
+      view.loadingVisibility(false);
+    }).catchError((e){
+      view.infoError(e.toString());
+      view.loadingVisibility(false);
+    });
+  }
+
+
+  // salva a senha
+  void _setRememberPassword(String password){
+    _repository.enablePasswordRemember(view.rememberPassword, password);
   }
 
 
   void init() {
     view.setPathRepository(_repository.getPathFile());
+    _getRememberPassword();
+  }
+
+  void _getRememberPassword() async{
+    String password = await _repository.getPasswordRemember();
+    if(password != null) {
+      view.password = pass;
+      _password = password;
+    }
   }
 }

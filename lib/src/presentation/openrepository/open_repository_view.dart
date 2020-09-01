@@ -11,4 +11,6 @@ abstract class OpenRepositoryView{
   void navigationListBook();
 
   Function(String) infoError;
+  set password(password);
+  bool get rememberPassword;
 }

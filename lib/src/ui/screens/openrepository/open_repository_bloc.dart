@@ -14,6 +14,11 @@ class OpenRepositoryBloc implements OpenRepositoryView{
   BuildContext _context;
 
   final textEditingPassword = TextEditingController();
+  @override
+  set password(password) => textEditingPassword.text = password;
+
+  @override
+  bool rememberPassword = false;
 
 
   //----- construtor --------
@@ -44,7 +49,7 @@ class OpenRepositoryBloc implements OpenRepositoryView{
   Stream<String> get streamValidatePassword => _blocValidatePassword.stream;
 
   final _blocLoadingVisibility = StreamController<bool>();
-      Stream<bool> get streamLoadingVisibility => _blocLoadingVisibility.stream;
+  Stream<bool> get streamLoadingVisibility => _blocLoadingVisibility.stream;
 
 
 
@@ -81,6 +86,7 @@ class OpenRepositoryBloc implements OpenRepositoryView{
   @override
   void setRememberPassword(bool remember){
     _blocRememberPassword.sink.add(remember);
+    rememberPassword = remember;
   }
 
 

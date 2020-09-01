@@ -76,7 +76,31 @@ class Repository {
 
 
 
-  // -------- book --------------
+  // ---------- preferences -------------
+  void enablePasswordRemember(enable, password){
+    _preferenceHelper.setPasswordRemember(getPathFile(), enable);
+    if(enable)
+      _preferenceHelper.setPasswordKey(getPathFile(), password);
+    else
+      _preferenceHelper.removerPasswordKey(getPathFile());
+  }
+
+  Future<String> getPasswordRemember() async{
+    return await _preferenceHelper.getPasswordRemember(getPathFile()) ?
+      _preferenceHelper.getPasswordKey(getPathFile()) : null;
+  }
+
+  void setHistoricFilePath(List<String> historic){
+    _preferenceHelper.setHistoric(historic);
+  }
+
+  Future<List<String>> historicFilePath() async{
+    return _preferenceHelper.getHistoric();
+  }
+
+
+
+  // --------------------- book ------------------------
   List<Book> getListBook() {
     return _books;
   }

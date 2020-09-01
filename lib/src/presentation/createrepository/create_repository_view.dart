@@ -10,4 +10,7 @@ abstract class CreateRepositoryView{
   void navigationListBook();
   void loadingVisibility(bool enable);
   Function(String) infoError;
+
+  set password(password);
+  bool get rememberPassword;
 }

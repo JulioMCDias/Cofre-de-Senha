@@ -17,6 +17,11 @@ class CreateRepositoryBloc implements CreateRepositoryView{
   BuildContext _context;
 
   final textEditingPassword = TextEditingController();
+  @override
+  set password(password) => textEditingPassword.text = password;
+
+  @override
+  bool rememberPassword = false;
 
 
   //----- construtor --------
@@ -49,7 +54,6 @@ class CreateRepositoryBloc implements CreateRepositoryView{
 
   final _blocLoadingVisibility = StreamController<bool>();
   Stream<bool> get streamLoadingVisibility => _blocLoadingVisibility.stream;
-
 
 
 
@@ -88,6 +92,7 @@ class CreateRepositoryBloc implements CreateRepositoryView{
   @override
   void setRememberPassword(bool remember){
     _blocRememberPassword.sink.add(remember);
+    rememberPassword = remember;
   }
 
   @override
